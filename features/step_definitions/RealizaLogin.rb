@@ -16,6 +16,3 @@ class RealizaLogin
 		end
 	end
 end
-
-#teste dev
-#teste dev 2
