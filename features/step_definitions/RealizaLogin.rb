@@ -18,3 +18,4 @@ class RealizaLogin
 end
 
 #maquina do brunaosss
+#maquina do koritar
