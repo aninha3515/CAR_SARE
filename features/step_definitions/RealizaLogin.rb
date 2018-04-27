@@ -16,8 +16,3 @@ class RealizaLogin
 		end
 	end
 end
-
-#inserindo commit na dev
-
-
-#BLABLABLA
