@@ -96,13 +96,14 @@ class PreencheSare
             select("TCRE – Termo de Compromisso de Restauração Ecológica", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
             find(:link, "Adicionar Termo").click
             fill_in("ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$TermoTcpraTcreTca$desPreambulo$ctl01$txtDescVariavel", :with => "Unidade Automatizada")
+            find("[title='Grava as alterações']").click
         end
 
         if usuario == "leilacm" && tipoTermo == "TCA"
             select("TCA – Termo de Compromisso da Adequação Ambiental", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
             find(:link, "Adicionar Termo").click
+            find("[title='Grava as alterações']").click
         end
-        find("[title='Grava as alterações']").click
     end
 
     def PreencheSare.DesenhaPropSare
