@@ -75,6 +75,36 @@ class PreencheSare
 
     end
 
+    def PreencheSare.AlteraSituacao(usuario)
+        if usuario == "leilacm"
+            find("[title='Analise']").click
+            find("[title='Adiciona uma nova Análise']").click
+            find("#ctl00_conteudo_TabNavegacao_TBAnalise_projetoAnalise_TabStatus_TabStatusProjeto_btnDataSituacao").click
+            find(".ajax__calendar_day", text: "20").click
+            sleep(3)
+            select("Em análise", :from => "ctl00$conteudo$TabNavegacao$TBAnalise$projetoAnalise$TabStatus$TabStatusProjeto$ddlSituacao")
+            sleep(3)
+            fill_in("ctl00$conteudo$TabNavegacao$TBAnalise$projetoAnalise$TabStatus$TabStatusProjeto$desAnalise", :with => "Teste Automatizado")
+            find(".BotaoCmd", text: "Finalizar").click
+            sleep(3)
+            find(:link, "Termo").click
+        end
+    end
+
+    def PreencheSare.GeraTermo(usuario,tipoTermo)
+        if usuario == "leilacm" && tipoTermo == "TCRE"
+            select("TCRE – Termo de Compromisso de Restauração Ecológica", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
+            find(:link, "Adicionar Termo").click
+            fill_in("ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$TermoTcpraTcreTca$desPreambulo$ctl01$txtDescVariavel", :with => "Unidade Automatizada")
+        end
+
+        if usuario == "leilacm" && tipoTermo == "TCA"
+            select("TCA – Termo de Compromisso da Adequação Ambiental", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
+            find(:link, "Adicionar Termo").click
+        end
+        find("[title='Grava as alterações']").click
+    end
+
     def PreencheSare.DesenhaPropSare
         find(:id, "__tab_ctl00_conteudo_TabNavegacao_TBArea").click
         find(:id, "ctl00_conteudo_TabNavegacao_TBArea_ProjetoAreaSemCar_cmdInclui").click
