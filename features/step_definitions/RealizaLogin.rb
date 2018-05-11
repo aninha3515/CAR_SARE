@@ -6,7 +6,7 @@ class RealizaLogin
 		#SARE Técnica = renatam
 		#SARE ADM = leilacm
 		#find(:id, "ctl00_conteudo_ctl00_Panel1").click
-		find(".Login").click
+		find('.Login').click
 		fill_in('username', :with => usuario)
 		fill_in('password', :with => "a")
 		find(:id, "login").click

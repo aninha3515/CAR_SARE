@@ -8,7 +8,8 @@ require 'pry'
 #require 'capybara-screenshot/cucumber'
 
 include Capybara::DSL
-	Capybara.register_driver :selenium do |globalweb|
+
+Capybara.register_driver :selenium do |globalweb|
 	Capybara::Selenium::Driver.new(globalweb, :browser => :chrome)
 end
 

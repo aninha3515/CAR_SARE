@@ -18,3 +18,4 @@ gem 'rubocop'
 gem 'faker'
 gem "cpf_cnpj"
 gem "blabla"
+gem 'rspec-retry'

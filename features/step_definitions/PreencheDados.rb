@@ -48,6 +48,18 @@ end
 		cpfPessoa = ""
 	end
 
+
+	def InsereDados.AnexaProcuracao
+		find("[title='Arqivos Anexos ao CAR']").click
+		find(".BotaoCmd", text: "Adicionar", visible: true).click
+		select("Procuração do Proprietário", :from => "ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBAnexo$carAnexo$ddlTipoAnexo")
+		fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBAnexo$carAnexo$desConteudo", :with => "Criado pelo teste automatizado")
+		attach_file('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBAnexo$carAnexo$fileUpload$ctl02', 'C:\Projetos\CAR_SARE_PRA\anexos\Teste.pdf')
+		sleep(2)
+		find(".BotaoCmd", text: "Salvar", visible: true).click
+		sleep(2)
+	end
+
 	def InsereDados.DesenhaPropriedade
 	find(:link, "Mapa").click
 	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl02_btnGeo").click
@@ -124,6 +136,8 @@ end
     def InsereDados.final
     #clica na aba Domínio
 	find(:id, "__tab_ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDominio").click
+	find(:link, "Matrículas").click
+	sleep 2
 	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDominio_carDominio_TabDominio_TBMatricula_carMatricula_cmdInclui").click
 	select("Guarulhos", :from =>"ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBMatricula$carMatricula$ddlComarca")
 	fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBMatricula$carMatricula$nomCartorio", :with => "1234")

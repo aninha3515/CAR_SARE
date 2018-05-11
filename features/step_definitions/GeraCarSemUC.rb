@@ -12,6 +12,7 @@ Quando("preencher todas as informações requeridas") do
 	InsereDados.inicio(nomeCAR = "Def Fazenda " +  Faker::Name.first_name + " SARE")
 	InsereDados.InserePessoa(cpfPessoa = "88258394800", permissao = "Tecnico")
 	InsereDados.InserePessoa(cpfPessoa = "03416907833", permissao = "Representante")
+	InsereDados.AnexaProcuracao
 	InsereDados.DesenhaPropriedade
 	InsereDados.NaoExiste
 end
