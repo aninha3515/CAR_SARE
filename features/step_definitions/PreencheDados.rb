@@ -23,7 +23,31 @@ class InsereDados
 	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_rblQualificacao_0").click
 	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_cmdAtualiza").click
 end
-   
+
+	def InsereDados.InserePessoa(cpfPessoa,permissao)
+		find(:link, "Domínio").click
+		if permissao == "Tecnico"
+			find(:link, "Técnicos").click
+		end
+
+		if permissao == "Representante"
+			find(:link, "Representantes").click
+		end
+		find(".BotaoCmd", text: "Adicionar", visible: true).click
+		sleep(5)
+		if permissao == "Representante"
+		fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBRepLegal$carRepLegal$pesPessoa$CPFCNPJ", :with => cpfPessoa)
+		end
+		if permissao == "Tecnico"
+			fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBResponsavel$carPessoa$pesPessoa$CPFCNPJ", :with => cpfPessoa)
+		end
+		find(:link, "Confirmar").click
+		sleep(5)
+		find(:link, "Salvar", visible: true).click
+		permissao = ""
+		cpfPessoa = ""
+	end
+
 	def InsereDados.DesenhaPropriedade
 	find(:link, "Mapa").click
 	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl02_btnGeo").click
