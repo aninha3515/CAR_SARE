@@ -9,7 +9,7 @@ Funcionalidade: Gerar Termo
   Quero executar um roteiro automatizado
   Para criar Termos
 
-@deslogar_sigam
+@deslogar_sigam @tira_print
 
   Cenario: Criar Termo
   	Dado que esteja tela de cadastro do Sare

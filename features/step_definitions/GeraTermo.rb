@@ -1,8 +1,10 @@
 require 'faker'
-link = "http://exec-dev01.sma.local/sigam-adequacao-test"
-usuario = "rosilened"
+#link = "http://exec-dev01.sma.local/sigam-adequacao-test"
+#link = "http://exec-dev01.sma.local/sigam-homologacao1"
+link = "http://exec-dev01.sma.local/sma-est-car_test/"
+
+usuario = "karinaac"
 Dado("que esteja tela de cadastro do Sare") do
-   #link = "http://exec-dev01.sma.local/sma-est-car_test/"
    visit(link)
    RealizaLogin.acesso(usuario)
    find(:id,"ctl00_lnkLogo").click
@@ -20,7 +22,7 @@ Dado("que esteja tela de cadastro do Sare") do
     PreencheSare.DesenhaPropSare
     PreencheSare.InsereCamposProp
     PreencheSare.NaoExiste
-    PreencheSare.DesenhaRestauracao
+    #PreencheSare.DesenhaRestauracao
   end
   Então("o sistema criará o Projeto SARE") do
     #

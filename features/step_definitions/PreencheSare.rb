@@ -76,7 +76,7 @@ class PreencheSare
     end
 
     def PreencheSare.AlteraSituacao(usuario)
-        if usuario == "leilacm"
+        if usuario == "leilacm" || usuario == "karinaac"
             find("[title='Analise']").click
             find("[title='Adiciona uma nova Análise']").click
             find("#ctl00_conteudo_TabNavegacao_TBAnalise_projetoAnalise_TabStatus_TabStatusProjeto_btnDataSituacao").click
@@ -92,14 +92,14 @@ class PreencheSare
     end
 
     def PreencheSare.GeraTermo(usuario,tipoTermo)
-        if usuario == "leilacm" && tipoTermo == "TCRE"
+        if ((usuario == "leilacm" || usuario == "karinaac" || usuario == "rodrigolp") && tipoTermo == "TCRE")
             select("TCRE – Termo de Compromisso de Restauração Ecológica", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
             find(:link, "Adicionar Termo").click
             fill_in("ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$TermoTcpraTcreTca$desPreambulo$ctl01$txtDescVariavel", :with => "Unidade Automatizada")
             find("[title='Grava as alterações']").click
         end
 
-        if usuario == "leilacm" && tipoTermo == "TCA"
+        if ((usuario == "leilacm" || usuario == "karinaac" || usuario == "rodrigolp") && tipoTermo == "TCA")
             select("TCA – Termo de Compromisso da Adequação Ambiental", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
             find(:link, "Adicionar Termo").click
             find("[title='Grava as alterações']").click
