@@ -10,3 +10,8 @@ sleep(2)
 puts("Deslogado com sucesso do ambiente!")
 end
 =end
+
+
+After('@tira_print') do
+    page.save_screenshot('log/shots/temp.png')
+end

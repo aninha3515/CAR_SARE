@@ -1,7 +1,8 @@
 require 'faker'
 class InsereDados
-    def InsereDados.inicio(nomeCAR)
-	find("[src='imagens/logo/CAR.png']").click
+	def InsereDados.inicio(nomeCAR)
+	#find("[src='imagens/logo/CAR.png']").click
+	first(".Atendimento", text: "SiCAR/SP", visible: true).click
 	#Validação para identificar se já possui CAR
 	if assert_text("Cadastrar Nova Propriedade")
 		find(:link, "Cadastrar Nova Propriedade").click
@@ -83,21 +84,57 @@ end
     end
 
     def InsereDados.NaoExiste
-    #seleciona as opções de "Não Existe"
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl03_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl05_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl06_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl07_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl08_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl09_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl10_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl12_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl13_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl14_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl15_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl16_chkNaoExiste").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl17_chkNaoExiste").click
-#termino da selecão
+	#seleciona as opções de "Não Existe"
+	textoServidaoAdm = "Servidão Administrativa"
+	textoRiosMais = "Rios com mais de 3 metros de largura média"
+	textoRiosMedia = "Rios com até 3 metros de largura média"
+	textoNascente = "Nascente"
+	textoOutrosCorpos = "Outros corpos d'água"
+	textoOutrasApps = "Outras APPs"
+	textoVegetacao = "Vegetação Nativa"
+	textoReservaLegal = "Reserva Legal"
+	textoDeclividade = "Declividade entre 25° e 45°"
+	textoUsoConsolidado = "Uso consolidado"
+	textoRLCompensacao = "Reserva legal de compensação"
+	textoServidaoAmb = "Servidão Ambiental"
+
+	flegaArea = find('.ModuloAlternado', text: textoServidaoAdm)
+	flegaArea.find('input[type=checkbox]').click
+
+	flegaArea = find('.ModuloAlternado', text: textoRiosMais)
+	flegaArea.find('input[type=checkbox]').click
+
+	flegaArea = find('.ModuloItem', text: textoRiosMedia)
+	flegaArea.find('input[type=checkbox]').click
+
+	flegaArea = find('.ModuloAlternado', text: textoNascente)
+	flegaArea.find('input[type=checkbox]').click
+
+	flegaArea = find('.ModuloItem', text: textoOutrosCorpos)
+	flegaArea.find('input[type=checkbox]').click
+
+	flegaArea = find('.ModuloAlternado', text: textoOutrasApps)
+	flegaArea.find('input[type=checkbox]').click
+
+	flegaArea = find('.ModuloAlternado', text: textoVegetacao)
+	flegaArea.find('input[type=checkbox]').click
+
+	flegaArea = find('.ModuloItem', text: textoReservaLegal)
+	flegaArea.find('input[type=checkbox]').click
+
+	flegaArea = find('.ModuloAlternado', text: textoDeclividade)
+	flegaArea.find('input[type=checkbox]').click
+
+	flegaArea = find('.ModuloItem', text: textoUsoConsolidado)
+	flegaArea.find('input[type=checkbox]').click
+
+	flegaArea = find('.ModuloAlternado', text: textoRLCompensacao)
+	flegaArea.find('input[type=checkbox]').click
+
+	flegaArea = find('.ModuloItem', text: textoServidaoAmb)
+	flegaArea.find('input[type=checkbox]').click
+
+	#termino da selecão
     end
 
     def InsereDados.DesenhaUC(usuario)

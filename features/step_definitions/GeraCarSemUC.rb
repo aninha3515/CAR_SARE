@@ -1,7 +1,8 @@
 require 'faker'
 usuario = "55613853720"
-link = "http://exec-dev01.sma.local/SMA-EST-CAR_test/"
+#link = "http://exec-dev01.sma.local/SMA-EST-CAR_test/"
 #link = "http://exec-dev01.sma.local/sigam-adequacao-test/"
+link = "http://exec-dev01.sma.local/sigam-homologacao1"
 
 Dado("que esteja preenchendo o cadastro do CAR") do
 	visit(link)

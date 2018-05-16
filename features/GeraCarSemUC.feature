@@ -9,7 +9,7 @@ Funcionalidade: Gerar CAR sem UC
   Quero executar um roteiro automatizado
   Para criar CAR sem UC no ambiente de Homolog
 
-@deslogar_sigam
+@deslogar_sigam @tira_print
 
   Cenario: Criar CAR sem UC Homolog
   	Dado que esteja preenchendo o cadastro do CAR

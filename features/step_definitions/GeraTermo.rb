@@ -1,6 +1,6 @@
 require 'faker'
 link = "http://exec-dev01.sma.local/sigam-adequacao-test"
-usuario = "talitacg"
+usuario = "rosilened"
 Dado("que esteja tela de cadastro do Sare") do
    #link = "http://exec-dev01.sma.local/sma-est-car_test/"
    visit(link)
