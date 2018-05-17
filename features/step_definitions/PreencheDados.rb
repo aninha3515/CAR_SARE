@@ -56,9 +56,9 @@ end
 		select("Procuração do Proprietário", :from => "ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBAnexo$carAnexo$ddlTipoAnexo")
 		fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBAnexo$carAnexo$desConteudo", :with => "Criado pelo teste automatizado")
 		attach_file('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBAnexo$carAnexo$fileUpload$ctl02', File.absolute_path('anexos/Teste.pdf'))
-		sleep(2)
+		sleep(5)
 		find(".BotaoCmd", text: "Salvar", visible: true).click
-		sleep(2)
+		sleep(5)
 	end
 
 	def InsereDados.DesenhaPropriedade
@@ -214,7 +214,7 @@ end
 	sleep(5)
 	find(:id, "ctl01_txtProcessoAno").click
 	end
-	sleep(5)
+	sleep(7)
 	find(:link, "Salvar Atributos").click
 	sleep(10)
 	#Fim da interação com o iframe de atributos

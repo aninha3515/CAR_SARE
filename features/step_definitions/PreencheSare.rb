@@ -118,7 +118,7 @@ class PreencheSare
         sleep(3)
         unidade = "Área de Proteção Ambiental Cabreúva"
         fill_in("ctl00_conteudo_TabNavegacao_TBArea_ProjetoAreaSemCar_TabNavegacao_TBCadastroSemCar_areaCadastroSemCar_dpUC_txtText_Input", :with => unidade)
-        sleep(5)
+        sleep(7)
         find(:id, "__tab_ctl00_conteudo_TabNavegacao_TBArea").click
         select("GUARULHOS", :from => "ctl00$conteudo$TabNavegacao$TBArea$ProjetoAreaSemCar$TabNavegacao$TBCadastroSemCar$areaCadastroSemCar$ddlMunicipio")
         sleep(5)
@@ -176,7 +176,6 @@ class PreencheSare
         page.driver.browser.action.move_to(map,669, 283).click.perform
         page.driver.browser.action.move_to(map,666, 241).click.perform
         sleep(5)
-        binding.pry
         find("[title='Clique para salvar o estado do mapa']").click
         sleep(5)
         page.driver.browser.switch_to.alert.dismiss
