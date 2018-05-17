@@ -16,7 +16,7 @@ Então("o sistema criará o CAR UC em Homlog") do
 	InsereDados.InserePessoa(cpfPessoa = "03416907833", permissao = "Representante")
 	InsereDados.AnexaProcuracao
 	InsereDados.DesenhaPropriedade
-	InsereDados.NaoExiste
+	InsereDados.NaoExiste(link)
 	InsereDados.DesenhaUC(usuario)
 	InsereDados.final
 	@numCar = find(:id, "ctl00_conteudo_lblCAR").text

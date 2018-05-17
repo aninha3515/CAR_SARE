@@ -98,7 +98,7 @@ end
 	textoRLCompensacao = "Reserva legal de compensação"
 	textoServidaoAmb = "Servidão Ambiental"
 	
-	if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-homologacao1"
+	if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-homologacao1" || link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
 
 	flegaArea = find('.ModuloAlternado', text: textoServidaoAdm)
 	flegaArea.find('input[type=checkbox]').click
