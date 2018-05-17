@@ -84,7 +84,7 @@ end
     end
 
     def InsereDados.NaoExiste(link)
-	#seleciona as opções de "Não Existe"
+	#seleciona "Não Existe"
 	textoServidaoAdm = "Servidão Administrativa"
 	textoRiosMais = "Rios com mais de 3 metros de largura média"
 	textoRiosMedia = "Rios com até 3 metros de largura média"
