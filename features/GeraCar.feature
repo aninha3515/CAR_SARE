@@ -9,7 +9,7 @@ Funcionalidade: Gerar CAR
   Quero executar um script
   Para criar CAR UC
 
-@deslogar_sigam
+@deslogar_sigam @tira_print
 
   Cenario: Criar CAR UC
   	Dado que esteja na tela de cadastro do CAR

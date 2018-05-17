@@ -10,6 +10,8 @@ Eu como usuário do portal do colaborador
 Quero marcar o ponto
 Para registrar meus horarios
 
+@deslogar_sigam @tira_print
+
 Cenário: Marcar o ponto automaticamente
 
 Dado que esteja na tela inicial
