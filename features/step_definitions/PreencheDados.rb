@@ -55,7 +55,7 @@ end
 		find(".BotaoCmd", text: "Adicionar", visible: true).click
 		select("Procuração do Proprietário", :from => "ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBAnexo$carAnexo$ddlTipoAnexo")
 		fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBAnexo$carAnexo$desConteudo", :with => "Criado pelo teste automatizado")
-		attach_file('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBAnexo$carAnexo$fileUpload$ctl02', 'C:\Projetos\CAR_SARE_PRA\anexos\Teste.pdf')
+		attach_file('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBAnexo$carAnexo$fileUpload$ctl02', 'anexos/Teste.pdf')
 		sleep(2)
 		find(".BotaoCmd", text: "Salvar", visible: true).click
 		sleep(2)
@@ -98,7 +98,7 @@ end
 	textoRLCompensacao = "Reserva legal de compensação"
 	textoServidaoAmb = "Servidão Ambiental"
 	
-	if link == "http://exec-dev01.sma.local/sigam-homologacao1"
+	if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-homologacao1"
 
 	flegaArea = find('.ModuloAlternado', text: textoServidaoAdm)
 	flegaArea.find('input[type=checkbox]').click
