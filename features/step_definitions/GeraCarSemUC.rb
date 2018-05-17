@@ -1,8 +1,8 @@
 require 'faker'
 usuario = "55613853720"
-#link = "http://exec-dev01.sma.local/SMA-EST-CAR_test/"
+link = "http://exec-dev01.sma.local/SMA-EST-CAR_test/"
 #link = "http://exec-dev01.sma.local/sigam-adequacao-test/"
-link = "http://exec-dev01.sma.local/sigam-homologacao1"
+#link = "http://exec-dev01.sma.local/sigam-homologacao1"
 
 Dado("que esteja preenchendo o cadastro do CAR") do
 	visit(link)
@@ -11,9 +11,9 @@ end
 
 Quando("preencher todas as informações requeridas") do
 	InsereDados.inicio(nomeCAR = "Def Fazenda " +  Faker::Name.first_name + " SARE")
-	#InsereDados.InserePessoa(cpfPessoa = "88258394800", permissao = "Tecnico")
-	#InsereDados.InserePessoa(cpfPessoa = "03416907833", permissao = "Representante")
-	#InsereDados.AnexaProcuracao
+	InsereDados.InserePessoa(cpfPessoa = "88258394800", permissao = "Tecnico")
+	InsereDados.InserePessoa(cpfPessoa = "03416907833", permissao = "Representante")
+	InsereDados.AnexaProcuracao
 	InsereDados.DesenhaPropriedade
 	InsereDados.NaoExiste(link)
 end
