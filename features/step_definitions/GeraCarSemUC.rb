@@ -1,6 +1,7 @@
 require 'faker'
 usuario = "55613853720"
-link = "http://exec-dev01.sma.local/SMA-EST-CAR_test/"
+#link = "http://exec-dev01.sma.local/SMA-EST-CAR_test/"
+link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 #link = "http://exec-dev01.sma.local/sigam-adequacao-test/"
 #link = "http://exec-dev01.sma.local/sigam-homologacao1"
 

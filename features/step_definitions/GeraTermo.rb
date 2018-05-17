@@ -1,7 +1,7 @@
 require 'faker'
 #link = "http://exec-dev01.sma.local/sigam-adequacao-test"
 #link = "http://exec-dev01.sma.local/sigam-homologacao1"
-link = "http://exec-dev01.sma.local/sma-est-car_test/"
+link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 
 usuario = "karinaac"
 Dado("que esteja tela de cadastro do Sare") do

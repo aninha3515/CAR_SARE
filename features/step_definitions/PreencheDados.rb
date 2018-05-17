@@ -138,7 +138,7 @@ end
 
 	end
 
-	if link == "http://exec-dev01.sma.local/SMA-EST-CAR_test/"
+	if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 
 		textoNascente = "Nascentes e Veredas"
 		textoLagoLagoa = "Lago e Lagoa Natural"
