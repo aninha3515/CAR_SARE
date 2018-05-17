@@ -17,5 +17,5 @@ Capybara.configure do |config|
     Capybara.current_driver = :selenium
     config.default_max_wait_time = 10
     Capybara.ignore_hidden_elements = false
-    #Capybara.page.driver.browser.manage.window.maximize
+    Capybara.page.driver.browser.manage.window.maximize
 end
