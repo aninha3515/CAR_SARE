@@ -58,7 +58,7 @@ class PreencheSare
         sleep(3)
         find("[title='Adicionar compromissários']").click
         sleep(3)
-        attach_file('ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBRepresentanteLegal$responsavelTermo$fileUpload$ctl02', 'C:\Projetos\CAR_SARE_PRA\anexos\Teste.pdf')
+        attach_file('ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBRepresentanteLegal$responsavelTermo$fileUpload$ctl02',  File.absolute_path('anexos/Teste.pdf'))
         sleep(10)
         find(:link, "Adicionar Anexos").click
         sleep(3)
