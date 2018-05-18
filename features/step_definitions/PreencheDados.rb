@@ -98,95 +98,92 @@ end
 	textoRLCompensacao = "Reserva legal de compensação"
 	textoServidaoAmb = "Servidão Ambiental"
 	
-	if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-homologacao1" || link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
+	if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-homologacao1"
 
-	flegaArea = find('.ModuloAlternado', text: textoServidaoAdm)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoServidaoAdm)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoRiosMais)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoRiosMais)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloItem', text: textoRiosMedia)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloItem', text: textoRiosMedia)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoNascente)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoNascente)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloItem', text: textoOutrosCorpos)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloItem', text: textoOutrosCorpos)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoOutrasApps)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoOutrasApps)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoVegetacao)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoVegetacao)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloItem', text: textoReservaLegal)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloItem', text: textoReservaLegal)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoDeclividade)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoDeclividade)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloItem', text: textoUsoConsolidado)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloItem', text: textoUsoConsolidado)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoRLCompensacao)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoRLCompensacao)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloItem', text: textoServidaoAmb)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloItem', text: textoServidaoAmb)
+		flegaArea.find('input[type=checkbox]').click
 
 	end
 
-	if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
+	if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/" || link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
 
 		textoNascente = "Nascentes e Veredas"
 		textoLagoLagoa = "Lago e Lagoa Natural"
 		textoRLCompensacao = "Reserva Legal de Compensação"
 
+		flegaArea = find('.ModuloAlternado', text: textoServidaoAdm)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoServidaoAdm)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoRiosMais)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoRiosMais)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloItem', text: textoRiosMedia)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloItem', text: textoRiosMedia)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoNascente)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoNascente)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloItem', text: textoLagoLagoa)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloItem', text: textoLagoLagoa)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoOutrosCorpos)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoOutrosCorpos)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloItem', text: textoOutrasApps)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloItem', text: textoOutrasApps)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloItem', text: textoVegetacao)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloItem', text: textoVegetacao)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoReservaLegal)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoReservaLegal)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloItem', text: textoDeclividade)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloItem', text: textoDeclividade)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloAlternado', text: textoUsoConsolidado)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloAlternado', text: textoUsoConsolidado)
-	flegaArea.find('input[type=checkbox]').click
+		flegaArea = find('.ModuloItem', text: textoRLCompensacao)
+		flegaArea.find('input[type=checkbox]').click
 
-	flegaArea = find('.ModuloItem', text: textoRLCompensacao)
-	flegaArea.find('input[type=checkbox]').click
-
-	flegaArea = find('.ModuloAlternado', text: textoServidaoAmb)
-	flegaArea.find('input[type=checkbox]').click
-
+		flegaArea = find('.ModuloAlternado', text: textoServidaoAmb)
+		flegaArea.find('input[type=checkbox]').click
 
 	end
-
 
 	#termino da selecão
     end

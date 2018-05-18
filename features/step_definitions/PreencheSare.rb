@@ -10,7 +10,7 @@ class PreencheSare
         #     page.driver.browser.switch_to.alert.accept
         # end
         fill_in("ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$nomProjeto", :with => nomeSare)
-        anoProcesso = "2016"
+        anoProcesso = "2017"
         find(:id, "ctl00_conteudo_TabNavegacao_TBCadastro_ProjetoCadastroSemCar_PesqProcesso_cmdExibeGrid").click
         #preenche o grid secundário
         fill_in("ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$PesqProcesso$txtFiltroAnoProcesso", :with => anoProcesso)
@@ -119,6 +119,7 @@ class PreencheSare
         unidade = "Área de Proteção Ambiental Cabreúva"
         fill_in("ctl00_conteudo_TabNavegacao_TBArea_ProjetoAreaSemCar_TabNavegacao_TBCadastroSemCar_areaCadastroSemCar_dpUC_txtText_Input", :with => unidade)
         sleep(7)
+        find(".TituloItem", text: "Coordenadas").click
         find(:id, "__tab_ctl00_conteudo_TabNavegacao_TBArea").click
         select("GUARULHOS", :from => "ctl00$conteudo$TabNavegacao$TBArea$ProjetoAreaSemCar$TabNavegacao$TBCadastroSemCar$areaCadastroSemCar$ddlMunicipio")
         sleep(5)
@@ -146,9 +147,12 @@ class PreencheSare
         find(:link,"Adicionar Dominialidade").click
         select("Amparo", :from => "ddlComarca")
         fill_in("txtCartorio", :with => "12345")
+        sleep(2)
         fill_in("txtNumMatricula", :with => "1234")
+        sleep(2)
         find("#rblPosse_0").click
         fill_in("txtPosse", :with => "12345")
+        sleep(2)
         find(:link, "Adicionar").click
         find(:link, "Salvar Atributos").click
         sleep(3)
