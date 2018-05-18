@@ -9,7 +9,6 @@ end
 
 Quando("preencher todas as informações") do
 	InsereDados.inicio(nomeCAR = "Exc Fazenda " +  Faker::Name.first_name)
-	binding.pry
 	numProtocolo = find(:id, "ctl00_conteudo_lblID").text
 	puts("Car sendo gerado... Número do Protocolo: " + numProtocolo)
 end
