@@ -16,11 +16,6 @@ end
 Então("o sistema criará o CAR") do
 	find(:id, "__tab_ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDeclaracao").click
 	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDeclaracao_carDeclaracao_gvConsulta_ctl07_chkDeclara").click
-	
-		#if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
-		#page.driver.browser.switch_to.alert.accept
-		#end
-	
 	InsereDados.InserePessoa(cpfPessoa = "88258394800", permissao = "Tecnico")
 	InsereDados.InserePessoa(cpfPessoa = "32660716897", permissao = "Representante")
 	InsereDados.AnexaProcuracao

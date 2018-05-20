@@ -30,11 +30,11 @@ class PreencheSare
         cpfPessoa = CPF.generate
         cnpjPessoa = CNPJ.generate
 
-        if tipoPessoa == "Física"
-        fill_in("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBCadastroPessoas$pesPessoa$CPFCNPJ", :with => cpfPessoa)
-        else
-        fill_in("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBCadastroPessoas$pesPessoa$CPFCNPJ", :with => cnpjPessoa)
-        end
+            if tipoPessoa == "Física"
+            fill_in("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBCadastroPessoas$pesPessoa$CPFCNPJ", :with => cpfPessoa)
+            else
+            fill_in("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBCadastroPessoas$pesPessoa$CPFCNPJ", :with => cnpjPessoa)
+            end
         
         find(:link, "Confirmar").click
         fill_in("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBCadastroPessoas$pesPessoa$nomPessoa", :with => nomPessoa)
@@ -48,62 +48,62 @@ class PreencheSare
         find(:link, "Cadastro Pessoas").click
         fill_in("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBCadastroPessoas$pesPessoa$EmailConfirma", :with => emailPessoa)
 
-        if funcaoPessoa == "Representante legal"
-        find("[title='Grava os dados da Pessoa']").click
-        textoPopUp = page.driver.browser.switch_to.alert.text
-        puts (textoPopUp)
-        page.driver.browser.switch_to.alert.accept
-        find(:link, "Compromissário(s) Representado(s)").click
-        check("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBRepresentanteLegal$responsavelTermo$gvCompromissarios$ctl02$chkCompromissario")
-        sleep(3)
-        find("[title='Adicionar compromissários']").click
-        sleep(3)
-        attach_file('ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBRepresentanteLegal$responsavelTermo$fileUpload$ctl02',  File.absolute_path('anexos/Teste.pdf'))
-        sleep(10)
-        find(:link, "Adicionar Anexos").click
-        sleep(3)
-        find("[title='Grava as alterações']").click
-        find(:id, "ctl00_conteudo_TabNavegacao_TBPessoa_ProjetoPessoa_TabNavegacao_TBRepresentanteLegal_responsavelTermo_cmdFinaliza").click
-        end
+            if funcaoPessoa == "Representante legal"
+            find("[title='Grava os dados da Pessoa']").click
+            textoPopUp = page.driver.browser.switch_to.alert.text
+            puts (textoPopUp)
+            page.driver.browser.switch_to.alert.accept
+            find(:link, "Compromissário(s) Representado(s)").click
+            check("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBRepresentanteLegal$responsavelTermo$gvCompromissarios$ctl02$chkCompromissario")
+            sleep(3)
+            find("[title='Adicionar compromissários']").click
+            sleep(3)
+            attach_file('ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBRepresentanteLegal$responsavelTermo$fileUpload$ctl02',  File.absolute_path('anexos/Teste.pdf'))
+            sleep(10)
+            find(:link, "Adicionar Anexos").click
+            sleep(3)
+            find("[title='Grava as alterações']").click
+            find(:id, "ctl00_conteudo_TabNavegacao_TBPessoa_ProjetoPessoa_TabNavegacao_TBRepresentanteLegal_responsavelTermo_cmdFinaliza").click
+            end
 
-        if funcaoPessoa == "Compromissário"
-        find("[title='Grava os dados da Pessoa']").click
-        validaMensagem = find("#ctl00_conteudo_TabNavegacao_TBPessoa_ProjetoPessoa_TabNavegacao_TBCadastroPessoas_pesPessoa_lblMensagem").text
-        puts(validaMensagem)
-        find("[title='Salva os dados e retorna para a Consulta']").click
-        end
+            if funcaoPessoa == "Compromissário"
+            find("[title='Grava os dados da Pessoa']").click
+            validaMensagem = find("#ctl00_conteudo_TabNavegacao_TBPessoa_ProjetoPessoa_TabNavegacao_TBCadastroPessoas_pesPessoa_lblMensagem").text
+            puts(validaMensagem)
+            find("[title='Salva os dados e retorna para a Consulta']").click
+            end
 
     end
 
     def PreencheSare.AlteraSituacao(usuario)
-        if usuario == "leilacm" || usuario == "karinaac"
-            find("[title='Analise']").click
-            find("[title='Adiciona uma nova Análise']").click
-            find("#ctl00_conteudo_TabNavegacao_TBAnalise_projetoAnalise_TabStatus_TabStatusProjeto_btnDataSituacao").click
-            find(".ajax__calendar_day", text: "20").click
-            sleep(3)
-            select("Em análise", :from => "ctl00$conteudo$TabNavegacao$TBAnalise$projetoAnalise$TabStatus$TabStatusProjeto$ddlSituacao")
-            sleep(3)
-            fill_in("ctl00$conteudo$TabNavegacao$TBAnalise$projetoAnalise$TabStatus$TabStatusProjeto$desAnalise", :with => "Teste Automatizado")
-            find(".BotaoCmd", text: "Finalizar").click
-            sleep(3)
-            find(:link, "Termo").click
-        end
+            if usuario == "leilacm" || usuario == "karinaac"
+                find("[title='Analise']").click
+                find("[title='Adiciona uma nova Análise']").click
+                find("#ctl00_conteudo_TabNavegacao_TBAnalise_projetoAnalise_TabStatus_TabStatusProjeto_btnDataSituacao").click
+                find(".ajax__calendar_day", text: "20").click
+                sleep(3)
+                select("Em análise", :from => "ctl00$conteudo$TabNavegacao$TBAnalise$projetoAnalise$TabStatus$TabStatusProjeto$ddlSituacao")
+                sleep(3)
+                fill_in("ctl00$conteudo$TabNavegacao$TBAnalise$projetoAnalise$TabStatus$TabStatusProjeto$desAnalise", :with => "Teste Automatizado")
+                find(".BotaoCmd", text: "Finalizar").click
+                sleep(3)
+                find(:link, "Termo").click
+            end
     end
 
     def PreencheSare.GeraTermo(usuario,tipoTermo)
-        if ((usuario == "leilacm" || usuario == "karinaac" || usuario == "rodrigolp") && tipoTermo == "TCRE")
-            select("TCRE – Termo de Compromisso de Restauração Ecológica", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
-            find(:link, "Adicionar Termo").click
-            fill_in("ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$TermoTcpraTcreTca$desPreambulo$ctl01$txtDescVariavel", :with => "Unidade Automatizada")
-            find("[title='Grava as alterações']").click
-        end
+            if ((usuario == "leilacm" || usuario == "karinaac" || usuario == "rodrigolp") && tipoTermo == "TCRE")
+                select("TCRE – Termo de Compromisso de Restauração Ecológica", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
+                find(:link, "Adicionar Termo").click
+                fill_in("ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$TermoTcpraTcreTca$desPreambulo$ctl01$txtDescVariavel", :with => "Unidade Automatizada")
+                find("[title='Grava as alterações']").click
+            end
 
-        if ((usuario == "leilacm" || usuario == "karinaac" || usuario == "rodrigolp") && tipoTermo == "TCA")
-            select("TCA – Termo de Compromisso da Adequação Ambiental", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
-            find(:link, "Adicionar Termo").click
-            find("[title='Grava as alterações']").click
-        end
+            if ((usuario == "leilacm" || usuario == "karinaac" || usuario == "rodrigolp") && tipoTermo == "TCA")
+                select("TCA – Termo de Compromisso da Adequação Ambiental", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
+                find(:link, "Adicionar Termo").click
+                find("[title='Grava as alterações']").click
+            end
     end
 
     def PreencheSare.DesenhaPropSare
