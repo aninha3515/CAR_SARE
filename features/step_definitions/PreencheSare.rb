@@ -96,7 +96,13 @@ class PreencheSare
                 select("TCRE – Termo de Compromisso de Restauração Ecológica", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
                 find(:link, "Adicionar Termo").click
                 fill_in("ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$TermoTcpraTcreTca$desPreambulo$ctl01$txtDescVariavel", :with => "Unidade Automatizada")
+                check("ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$TermoTcpraTcreTca$sareTermoSecoes$rptObrigacoesVariaveis$ctl00$ckbUsaObrigacaoVariavel")
+                fill_in("ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$TermoTcpraTcreTca$sareTermoSecoes$rptObrigacoesVariaveis$ctl00$txtOrdemObrigacaoVariavel", :with => "1.15")
                 find("[title='Grava as alterações']").click
+                find(:link, "Gerar Termo").click
+                textoTermo = page.driver.browser.switch_to.alert.text
+                puts(textoTermo)
+                page.driver.browser.switch_to.alert.accept
             end
 
             if ((usuario == "leilacm" || usuario == "karinaac" || usuario == "rodrigolp") && tipoTermo == "TCA")
