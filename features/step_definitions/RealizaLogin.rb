@@ -12,9 +12,10 @@ class RealizaLogin
 	end
 end
 
-#CAR UC - marianab
+#usuarios
 		#Usuario Externo = 55613853720
 		#CAR Técnico = karinaac
 		#SARE Técnica = renatam
 		#SARE ADM = leilacm
 		#find(:id, "ctl00_conteudo_ctl00_Panel1").click
+		#03416907833 - usuario externo
