@@ -45,7 +45,6 @@ end
 		find(:link, "Salvar", visible: true).click
 	end
 
-
 	def InsereDados.AnexaProcuracao
 		find("[title='Arqivos Anexos ao CAR']").click
 		find(".BotaoCmd", text: "Adicionar", visible: true).click
