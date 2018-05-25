@@ -1,13 +1,15 @@
 require 'faker'
 usuario = "03416907833"
 link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
-#link = "http://exec-dev01.sma.local/SMA-EST-CAR_test/"
+#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 Dado("que esteja na tela do CAR") do
 	visit(link)
 	RealizaLogin.acesso(usuario)
 end
 Quando("preencher todas as informações necessarias") do
 	InsereDados.inicio(nomeCAR = "Exc Fazenda " +  Faker::Name.first_name)
+	numProtocolo = find(:id, "ctl00_conteudo_lblID").text
+	puts("Car sendo gerado... Número do Protocolo: " + numProtocolo)
 end
 Então("o sistema criará o CAR UC em Homlog") do
 	find(:id, "__tab_ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDeclaracao").click
