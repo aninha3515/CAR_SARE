@@ -1,7 +1,6 @@
 require 'faker'
 class InsereDados
 	def InsereDados.inicio(nomeCAR)
-	#find("[src='imagens/logo/CAR.png']").click
 	first(".Atendimento", text: "SiCAR/SP", visible: true).click
 	#Validação para identificar se já possui CAR
 		if assert_text("Cadastrar Nova Propriedade")
@@ -29,24 +28,21 @@ end
 		find(:link, "Domínio").click
 			if permissao == "Tecnico"
 				find(:link, "Técnicos").click
+				find(".BotaoCmd", text: "Adicionar", visible: true).click
+				fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBResponsavel$carPessoa$pesPessoa$CPFCNPJ", :with => cpfPessoa)
+				find(:link, "Confirmar").click
 			end
 
 			if permissao == "Representante"
 				find(:link, "Representantes").click
+				find(".BotaoCmd", text: "Adicionar", visible: true).click
+				fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBRepLegal$carRepLegal$pesPessoa$CPFCNPJ", :with => cpfPessoa)
+				find(:link, "Confirmar").click
+				sleep(2)
+				find("input[id*=chkPodeAlterar]").click
 			end
-			find(".BotaoCmd", text: "Adicionar", visible: true).click
-			sleep(5)
-			if permissao == "Representante"
-			fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBRepLegal$carRepLegal$pesPessoa$CPFCNPJ", :with => cpfPessoa)
-			end
-			if permissao == "Tecnico"
-				fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBResponsavel$carPessoa$pesPessoa$CPFCNPJ", :with => cpfPessoa)
-			end
-		find(:link, "Confirmar").click
 		sleep(5)
 		find(:link, "Salvar", visible: true).click
-		permissao = ""
-		cpfPessoa = ""
 	end
 
 
@@ -265,7 +261,7 @@ end
 		#clica na aba Domínio
 		find(:id, "__tab_ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDominio").click
 		find(:link, "Matrículas").click
-		sleep 2
+		sleep(2)
 		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDominio_carDominio_TabDominio_TBMatricula_carMatricula_cmdInclui").click
 		select("Guarulhos", :from =>"ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBMatricula$carMatricula$ddlComarca")
 		fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBMatricula$carMatricula$nomCartorio", :with => "1234")
