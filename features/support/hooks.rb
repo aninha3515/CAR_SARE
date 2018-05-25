@@ -15,7 +15,6 @@ end
 After('@tira_print') do
     page.save_screenshot('log/shots/temp.png')
         sleep(3)
-        binding.pry
         find(:id, "ctl00_cmdLogin").click
         find(:link, "aqui").click
         sleep(2)
