@@ -6,9 +6,6 @@ class PreencheSare
         find(:link, "Cadastrar projetos com dispensa de CAR").click
         #aba Cadastro
         select('Exigência da CETESB', :from => 'ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$ddlMotivo')
-        # if link == "http://exec-dev01.sma.local/sigam-adequacao-test"
-        #     page.driver.browser.switch_to.alert.accept
-        # end
         fill_in("ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$nomProjeto", :with => nomeSare)
         anoProcesso = "2017"
         find(:id, "ctl00_conteudo_TabNavegacao_TBCadastro_ProjetoCadastroSemCar_PesqProcesso_cmdExibeGrid").click
