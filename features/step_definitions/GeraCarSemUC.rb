@@ -17,10 +17,10 @@ Quando("preencher todas as informações requeridas") do
 	InsereDados.AnexaProcuracao
 	InsereDados.DesenhaPropriedade
 	InsereDados.NaoExiste(link)
+	InsereDados.final
 end
 
 Então("o sistema criará o CAR sem UC em Homlog") do
-	InsereDados.final
 	@numCar = find(:id, "ctl00_conteudo_lblCAR").text
 	puts("CAR Deficitário criado com sucesso no ambiente de homologação e seu número é: " +  @numCar)	
 end
