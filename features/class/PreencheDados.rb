@@ -239,12 +239,12 @@ end
 		page.driver.browser.switch_to.frame(0)
 		#validacao para interagir com campos, caso seja o usuário da marianab
 			if usuario == "marianab"
-			processo = "1919501" #idProcesso EST-CAR: 1919501
-			select("Cerrado", :from => "ctl01$ddlBioma")
-			sleep(5)
-			fill_in("ctl01$txtIdentificadorDoProcesso", :with => processo)
-			sleep(5)
-			find(:id, "ctl01_txtProcessoAno").click
+				processo = "1919501" #idProcesso EST-CAR: 1919501
+				select("Cerrado", :from => "ctl01$ddlBioma")
+				sleep(5)
+				fill_in("ctl01$txtIdentificadorDoProcesso", :with => processo)
+				sleep(5)
+				find(:id, "ctl01_txtProcessoAno").click
 			end
 		sleep(7)
 		find(:link, "Salvar Atributos").click

@@ -46,28 +46,28 @@ class PreencheSare
         fill_in("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBCadastroPessoas$pesPessoa$EmailConfirma", :with => emailPessoa)
 
             if funcaoPessoa == "Representante legal"
-            find("[title='Grava os dados da Pessoa']").click
-            textoPopUp = page.driver.browser.switch_to.alert.text
-            puts (textoPopUp)
-            page.driver.browser.switch_to.alert.accept
-            find(:link, "Compromissário(s) Representado(s)").click
-            check("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBRepresentanteLegal$responsavelTermo$gvCompromissarios$ctl02$chkCompromissario")
-            sleep(3)
-            find("[title='Adicionar compromissários']").click
-            sleep(3)
-            attach_file('ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBRepresentanteLegal$responsavelTermo$fileUpload$ctl02',  File.absolute_path('anexos/Teste.pdf'))
-            sleep(10)
-            find(:link, "Adicionar Anexos").click
-            sleep(3)
-            find("[title='Grava as alterações']").click
-            find(:id, "ctl00_conteudo_TabNavegacao_TBPessoa_ProjetoPessoa_TabNavegacao_TBRepresentanteLegal_responsavelTermo_cmdFinaliza").click
+                find("[title='Grava os dados da Pessoa']").click
+                textoPopUp = page.driver.browser.switch_to.alert.text
+                puts (textoPopUp)
+                page.driver.browser.switch_to.alert.accept
+                find(:link, "Compromissário(s) Representado(s)").click
+                check("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBRepresentanteLegal$responsavelTermo$gvCompromissarios$ctl02$chkCompromissario")
+                sleep(3)
+                find("[title='Adicionar compromissários']").click
+                sleep(3)
+                attach_file('ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBRepresentanteLegal$responsavelTermo$fileUpload$ctl02',  File.absolute_path('anexos/Teste.pdf'))
+                sleep(10)
+                find(:link, "Adicionar Anexos").click
+                sleep(3)
+                find("[title='Grava as alterações']").click
+                find(:id, "ctl00_conteudo_TabNavegacao_TBPessoa_ProjetoPessoa_TabNavegacao_TBRepresentanteLegal_responsavelTermo_cmdFinaliza").click
             end
 
             if funcaoPessoa == "Compromissário"
-            find("[title='Grava os dados da Pessoa']").click
-            validaMensagem = find("#ctl00_conteudo_TabNavegacao_TBPessoa_ProjetoPessoa_TabNavegacao_TBCadastroPessoas_pesPessoa_lblMensagem").text
-            puts(validaMensagem)
-            find("[title='Salva os dados e retorna para a Consulta']").click
+                find("[title='Grava os dados da Pessoa']").click
+                validaMensagem = find("#ctl00_conteudo_TabNavegacao_TBPessoa_ProjetoPessoa_TabNavegacao_TBCadastroPessoas_pesPessoa_lblMensagem").text
+                puts(validaMensagem)
+                find("[title='Salva os dados e retorna para a Consulta']").click
             end
 
     end

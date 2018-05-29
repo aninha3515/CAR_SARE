@@ -1,5 +1,5 @@
 require 'faker'
-link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test"
+link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
 #link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-homologacao1"
 #link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 

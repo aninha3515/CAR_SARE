@@ -7,7 +7,7 @@ class RealizaLogin
 		# analisar o trecho do código abaixo
 		@EntraCAR = find(:id, "ctl00_lblNomPortal").text
 			if @EntraCAR == "Centro de Monitoramento e Avaliação de Programas e Projeto"
-			find(:id, "ctl00_lnkLogo").click
+				find(:id, "ctl00_lnkLogo").click
 			end
 	end
 end
