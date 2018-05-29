@@ -149,6 +149,7 @@ class PreencheSare
         find('#txtReferencia').set("Teste Automatizado do Koritar")
         find(:link,"Adicionar Dominialidade").click
         select("Amparo", :from => "ddlComarca")
+        sleep(3)
         fill_in("txtCartorio", :with => "12345")
         sleep(2)
         fill_in("txtNumMatricula", :with => "1234")
