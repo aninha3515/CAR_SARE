@@ -5,11 +5,11 @@ link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test
 
 Dado("que esteja cadastrando o CAR") do                                      
     visit(link)
-	  RealizaLogin.acesso(usuario)
+    RealizaLogin.acesso(usuario)
+    InsereDados.inicio(nomeCAR = "Exc Fazenda " +  Faker::Name.first_name)
 end                                                                          
                                                                                
   Quando("preencher todos os campos") do                                       
-    InsereDados.inicio(nomeCAR = "Exc Fazenda " +  Faker::Name.first_name)
     numProtocolo = find(:id, "ctl00_conteudo_lblID").text
     puts("Car sendo gerado... Número do Protocolo: " + numProtocolo)
     find(:id, "__tab_ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDeclaracao").click
@@ -33,7 +33,7 @@ end
     Desenha.Informacoes(tipo = 'Declividade', pt1x = 794 , pt1y = 368 , pt2x = 800 , pt2y = 347 , pt3x = 832 , pt3y = 362 , pt4x = 796 , pt4y = 371)
     Desenha.Informacoes(tipo = 'UsoConsolidado', pt1x = 794 , pt1y = 368 , pt2x = 800 , pt2y = 347 , pt3x = 832 , pt3y = 362 , pt4x = 796 , pt4y = 371)
     Desenha.Informacoes(tipo = 'RLCompensacao', pt1x = 782 , pt1y = 284 , pt2x = 797 , pt2y = 255 , pt3x = 824 , pt3y = 281 , pt4x = 779 , pt4y = 279)
-    Desenha.Informacoes(tipo = 'ServidaoAmb', pt1x = 717 , pt1y = 208 , pt2x = 715 , pt2y = 161 , pt3x = 758 , pt3y = 181 , pt4x = 718 , pt4y = 201)
+    Desenha.Informacoes(tipo = 'ServidaoAmb', pt1x = 717 , pt1y = 208 , pt2x = 715 , pt2y = 161 , pt3x = 758 , pt3y = 181 , pt4x = 718 , pt4y = 211)
     Desenha.Informacoes(tipo = 'AreaEmUC', pt1x = 664 , pt1y = 319 , pt2x = 644 , pt2y = 297 , pt3x = 674 , pt3y = 297 , pt4x = 662 , pt4y = 320)
    
   end                                                                          

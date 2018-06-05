@@ -235,6 +235,7 @@ class Desenha
 
         if tipo == "ServidaoAmb"
             sleep(3)
+            binding.pry
             page.driver.browser.switch_to.frame(0)
             choose('ctl01_rblLegal_0')
             fill_in("ctl01$txtAno", :with => "2016")
