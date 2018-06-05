@@ -1,7 +1,6 @@
 class Desenha
 
-    def Desenha.Informacoes(tipo,pt1x,pt1y,pt2x,pt2y,
-        pt3x,pt3y,pt4x,pt4y)
+    def Desenha.Informacoes(tipo,coordenadas)
         
 		textoServidaoAdm = "Servidão Administrativa"
 		textoRiosMais = "Rios com mais de 3 metros de largura média"
@@ -93,12 +92,12 @@ class Desenha
             
         sleep(5)
         
-        Desenha.DesenhaPoligono(tipo,pt1x,pt1y,pt2x,pt2y,pt3x,pt3y,pt4x,pt4y)
+        Desenha.DesenhaPoligono(tipo,coordenadas)
         Desenha.SalvaPoligono(tipo)
         
     end
 
-    def Desenha.DesenhaPoligono(tipo,pt1x,pt1y,pt2x,pt2y,pt3x,pt3y,pt4x,pt4y)
+    def Desenha.DesenhaPoligono(tipo,coordenadas)
         page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")        
         if tipo == "RiosMedia"
             find("[title='Desenhar linha']").click
@@ -107,11 +106,11 @@ class Desenha
         else
         find("[title='Desenhar forma']").click
         end
-		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
-		page.driver.browser.action.move_to(map,pt1x, pt1y).click.perform
-		page.driver.browser.action.move_to(map,pt2x, pt2y).click.perform
-		page.driver.browser.action.move_to(map,pt3x, pt3y).click.perform
-		page.driver.browser.action.move_to(map,pt4x, pt4y).click.perform
+        map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
+		page.driver.browser.action.move_to(map,coordenadas[0],coordenadas[1]).click.perform
+		page.driver.browser.action.move_to(map,coordenadas[2],coordenadas[3]).click.perform
+		page.driver.browser.action.move_to(map,coordenadas[4],coordenadas[5]).click.perform
+		page.driver.browser.action.move_to(map,coordenadas[6],coordenadas[7]).click.perform
     end
     
     def Desenha.SalvaPoligono(tipo)
