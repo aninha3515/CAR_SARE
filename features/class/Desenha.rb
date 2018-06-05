@@ -35,7 +35,7 @@ class Desenha
             
         end
 
-        if tipo == "Nascente"
+        if tipo == "Nascente" || tipo == "NascenteVereda"
             flegaArea = find('.ModuloAlternado', text: textoNascente)
             flegaArea.first(:css, 'a[href]').click
         end
@@ -101,7 +101,7 @@ class Desenha
         page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")        
         if tipo == "RiosMedia"
             find("[title='Desenhar linha']").click
-        elsif tipo == "Nascente"
+        elsif tipo == "Nascente" || tipo == "NascenteVereda"
             find("[title='Desenhar nascente difusa']").click
         else
         find("[title='Desenhar forma']").click
@@ -143,6 +143,20 @@ class Desenha
             page.driver.browser.switch_to.frame(0)
             sleep(3)
             choose('Nascente Difusa')
+            find(:link, "Salvar Atributos").click
+            sleep(3)
+            page.driver.browser.switch_to.frame(1)
+            sleep(3)
+            find(:link, "Sair do Mapa").click
+            sleep(5)
+        end
+
+        
+        if tipo == "NascenteVereda"
+            sleep(3)
+            page.driver.browser.switch_to.frame(0)
+            sleep(3)
+            choose('Vereda')
             find(:link, "Salvar Atributos").click
             sleep(3)
             page.driver.browser.switch_to.frame(1)
@@ -260,6 +274,7 @@ class Desenha
             find(:link, "Salvar Atributos").click
             sleep(5)
             page.driver.browser.switch_to.frame(1)
+            sleep(5)
             find(:link, "Sair do Mapa").click
             sleep(10)
         end
