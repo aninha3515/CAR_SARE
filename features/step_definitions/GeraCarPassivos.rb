@@ -37,9 +37,7 @@ Dado("que esteja no cadastro do CAR") do
     Desenha.Informacoes(tipo = 'ReservaLegal',  coordenadas = [557,261,575,231,605,263,561,264])
     Desenha.Informacoes(tipo = 'Declividade',   coordenadas = [794,368,800,347,832,362,796,371])
     Desenha.Informacoes(tipo = 'UsoConsolidado',coordenadas = [794,368,800,347,832,362,796,371])
-
-    binding.pry
-
+    
     #Desenha Uso Consolidado em todas as APPs
     #Desenha.Informacoes(tipo = 'UsoConsolidado',coordenadas = [794,368,800,347,832,362,796,371])
     #Desenha.Informacoes(tipo = 'UsoConsolidado',coordenadas = [794,368,800,347,832,362,796,371])
