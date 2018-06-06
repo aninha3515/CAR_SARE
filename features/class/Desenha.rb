@@ -152,6 +152,7 @@ class Desenha
             sleep(3)
             find(:link, "Salvar Atributos").click
             sleep(3)
+            Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             sleep(3)
             find(:link, "Sair do Mapa").click
@@ -165,6 +166,7 @@ class Desenha
             choose('Nascente Difusa')
             find(:link, "Salvar Atributos").click
             sleep(3)
+            Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             sleep(3)
             find(:link, "Sair do Mapa").click
@@ -179,6 +181,7 @@ class Desenha
             choose('Vereda')
             find(:link, "Salvar Atributos").click
             sleep(3)
+            Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             sleep(3)
             find(:link, "Sair do Mapa").click
@@ -194,6 +197,7 @@ class Desenha
             sleep(3)
             find(:link, "Salvar Atributos").click
             sleep(3)
+            Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             sleep(3)
             find(:link, "Sair do Mapa").click
@@ -208,6 +212,7 @@ class Desenha
             sleep(3)
             find(:link, "Salvar Atributos").click
             sleep(3)
+            Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             sleep(3)
             find(:link, "Sair do Mapa").click
@@ -228,6 +233,7 @@ class Desenha
             sleep(3)
             find(:link, "Salvar Atributos").click
             sleep(3)
+            Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             sleep(3)
             find(:link, "Sair do Mapa").click
@@ -242,6 +248,7 @@ class Desenha
             sleep(3)
             find(:link, "Salvar Atributos").click
             sleep(3)
+            Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             sleep(3)
             find(:link, "Sair do Mapa").click
@@ -255,10 +262,8 @@ class Desenha
             select("Ecoturismo", :from => "ctl01$ddlTipoUso")
             sleep(3)
             find(:link, "Salvar Atributos").click
-            popUp = page.driver.browser.switch_to.alert.text
-            puts(popUp)
-            page.driver.browser.switch_to.alert.accept
             sleep(5)
+            Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             find(:link, "Sair do Mapa").click
             sleep(5)
@@ -277,6 +282,7 @@ class Desenha
             choose('ctl01_rblCondominio_0')
             find(:link, "Salvar Atributos").click
             sleep(5)
+            Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             find(:link, "Sair do Mapa").click
             sleep(5)
@@ -298,11 +304,10 @@ class Desenha
             choose('ctl01_rblCondominio_0')
             find(:link, "Salvar Atributos").click
             sleep(5)
-            popUp = page.driver.browser.switch_to.alert.text
-            puts(popUp)
-            page.driver.browser.switch_to.alert.accept
-            sleep(5)
+            Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
+            sleep(5)
+
             find(:link, "Sair do Mapa").click
             sleep(5)
         end
@@ -313,10 +318,23 @@ class Desenha
             sleep(5)
             find(:link, "Salvar Atributos").click
             sleep(5)
+            Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             sleep(5)
             find(:link, "Sair do Mapa").click
             sleep(10)
+        end
+    end
+
+    def Desenha.verificaPopUp
+        begin
+            page.driver.browser.switch_to.alert
+            true
+            popUp = page.driver.browser.switch_to.alert.text
+            puts(popUp)
+            page.driver.browser.switch_to.alert.accept
+        rescue Selenium::WebDriver::Error::NoAlertPresentError
+            false
         end
     end
 end
