@@ -298,6 +298,10 @@ class Desenha
             choose('ctl01_rblCondominio_0')
             find(:link, "Salvar Atributos").click
             sleep(5)
+            popUp = page.driver.browser.switch_to.alert.text
+            puts(popUp)
+            page.driver.browser.switch_to.alert.accept
+            sleep(5)
             page.driver.browser.switch_to.frame(1)
             find(:link, "Sair do Mapa").click
             sleep(5)
