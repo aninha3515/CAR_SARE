@@ -70,7 +70,7 @@ class Desenha
             flegaArea.first(:css, 'a[href]').click
         end
 
-        if tipo == "UsoConsolidado"
+        if tipo == "UsoConsolidado" || tipo == "UsoConsolidadoApp"
             flegaArea = find('.ModuloAlternado', text: textoUsoConsolidado)
             flegaArea.first(:css, 'a[href]').click
         end
@@ -94,11 +94,31 @@ class Desenha
         
         Desenha.DesenhaPoligono(tipo,coordenadas)
         Desenha.SalvaPoligono(tipo)
-        
+    end
+
+    def Desenha.Ponto(tipo)
+        textoNascente = "Nascentes e Veredas"
+            if tipo == "NascentePonto"
+                flegaArea = find('.ModuloAlternado', text: textoNascente)
+                flegaArea.first(:css, 'a[href]').click
+                sleep(5)
+                page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+                find("[title='Inserir nascente pontual']").click
+                map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
+                page.driver.browser.action.move_to(map,628,195).click.perform
+                sleep(3)
+                find(:link, "Sair do Mapa").click
+                sleep(5)
+            end
     end
 
     def Desenha.DesenhaPoligono(tipo,coordenadas)
-        page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")        
+        page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+        
+        if tipo == "UsoConsolidadoApp"
+            find("[title='Aumentar o zoom']").click
+        end
+
         if tipo == "RiosMedia"
             find("[title='Desenhar linha']").click
         elsif tipo == "Nascente" || tipo == "NascenteVereda"
@@ -224,6 +244,22 @@ class Desenha
             sleep(3)
             page.driver.browser.switch_to.frame(1)
             sleep(3)
+            find(:link, "Sair do Mapa").click
+            sleep(5)
+        end
+
+        if tipo == "UsoConsolidadoApp"
+            sleep(3)
+            page.driver.browser.switch_to.frame(0)
+            sleep(3)
+            select("Ecoturismo", :from => "ctl01$ddlTipoUso")
+            sleep(3)
+            find(:link, "Salvar Atributos").click
+            popUp = page.driver.browser.switch_to.alert.text
+            puts(popUp)
+            page.driver.browser.switch_to.alert.accept
+            sleep(5)
+            page.driver.browser.switch_to.frame(1)
             find(:link, "Sair do Mapa").click
             sleep(5)
         end
