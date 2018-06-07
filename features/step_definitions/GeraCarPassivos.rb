@@ -39,7 +39,6 @@ Dado("que esteja no cadastro do CAR") do
     Desenha.Informacoes(tipo = 'Declividade',       coordenadas = [794,368,800,347,832,362,796,371])
     Desenha.Informacoes(tipo = 'UsoConsolidado',    coordenadas = [794,368,800,347,832,362,796,371])
     Desenha.Informacoes(tipo = 'UsoConsolidadoApp', coordenadas = [357,142,975,66,973,92,356,145])
-    binding.pry
     Desenha.Informacoes(tipo = 'UsoConsolidadoOutrasApp', coordenadas = [622,243,651,211,675,257,624,245])
     
     Desenha.Informacoes(tipo = 'RLCompensacao',     coordenadas = [782,284,797,255,824,281,779,279])
