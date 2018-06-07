@@ -70,7 +70,7 @@ class Desenha
             flegaArea.first(:css, 'a[href]').click
         end
 
-        if tipo == "UsoConsolidado" || tipo == "UsoConsolidadoApp"
+        if tipo == "UsoConsolidado" || tipo == "UsoConsolidadoApp" || tipo == "UsoConsolidadoOutrasApp"
             flegaArea = find('.ModuloAlternado', text: textoUsoConsolidado)
             flegaArea.first(:css, 'a[href]').click
         end
@@ -119,6 +119,11 @@ class Desenha
             find("[title='Aumentar o zoom']").click
         end
 
+        if tipo == "UsoConsolidadoOutrasApp"
+            find("[title='Aumentar o zoom']").click
+            find("[title='Aumentar o zoom']").click
+        end
+
         if tipo == "RiosMedia"
             find("[title='Desenhar linha']").click
         elsif tipo == "Nascente" || tipo == "NascenteVereda"
@@ -138,7 +143,7 @@ class Desenha
         if (tipo == "ServidaoAdm" || tipo == "RiosMedia" || tipo == "LagoLagoa" || tipo == "Vegetacao" || tipo == "Declividade")
             find("[title='Clique para salvar o estado do mapa']").click
             sleep(5)
-            page.driver.browser.switch_to.alert.accept
+            Desenha.verificaPopUp
             sleep(3)
             find(:link, "Sair do Mapa").click
             sleep(5)
@@ -256,6 +261,20 @@ class Desenha
         end
 
         if tipo == "UsoConsolidadoApp"
+            sleep(3)
+            page.driver.browser.switch_to.frame(0)
+            sleep(3)
+            select("Ecoturismo", :from => "ctl01$ddlTipoUso")
+            sleep(3)
+            find(:link, "Salvar Atributos").click
+            sleep(5)
+            Desenha.verificaPopUp
+            page.driver.browser.switch_to.frame(1)
+            find(:link, "Sair do Mapa").click
+            sleep(5)
+        end
+
+        if tipo == "UsoConsolidadoOutrasApp"
             sleep(3)
             page.driver.browser.switch_to.frame(0)
             sleep(3)

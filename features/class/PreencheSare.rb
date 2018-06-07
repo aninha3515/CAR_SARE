@@ -73,7 +73,7 @@ class PreencheSare
     end
 
     def PreencheSare.AlteraSituacao(usuario)
-            if usuario == "leilacm" || usuario == "karinaac"
+            if (usuario == "leilacm" || usuario == "karinaac" || usuario == "gtiadm")
                 find("[title='Analise']").click
                 find("[title='Adiciona uma nova Análise']").click
                 find("#ctl00_conteudo_TabNavegacao_TBAnalise_projetoAnalise_TabStatus_TabStatusProjeto_btnDataSituacao").click
@@ -89,7 +89,7 @@ class PreencheSare
     end
 
     def PreencheSare.GeraTermo(usuario,tipoTermo)
-            if ((usuario == "leilacm" || usuario == "karinaac" || usuario == "rodrigolp") && tipoTermo == "TCRE")
+            if ((usuario == "leilacm" || usuario == "karinaac" || usuario == "rodrigolp" || usuario == "gtiadm") && tipoTermo == "TCRE")
                 select("TCRE – Termo de Compromisso de Restauração Ecológica", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
                 find(:link, "Adicionar Termo").click
                 fill_in("ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$TermoTcpraTcreTca$desPreambulo$ctl01$txtDescVariavel", :with => "Unidade Automatizada")
@@ -102,7 +102,7 @@ class PreencheSare
                 page.driver.browser.switch_to.alert.accept
             end
 
-            if ((usuario == "leilacm" || usuario == "karinaac" || usuario == "rodrigolp") && tipoTermo == "TCA")
+            if ((usuario == "leilacm" || usuario == "karinaac" || usuario == "rodrigolp" || usuario == "gtiadm") && tipoTermo == "TCA")
                 select("TCA – Termo de Compromisso da Adequação Ambiental", :from => "ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBSubTermos$dplTermos")
                 find(:link, "Adicionar Termo").click
                 find("[title='Grava as alterações']").click
@@ -121,7 +121,7 @@ class PreencheSare
         sleep(3)
         unidade = "Área de Proteção Ambiental Cabreúva"
         fill_in("ctl00_conteudo_TabNavegacao_TBArea_ProjetoAreaSemCar_TabNavegacao_TBCadastroSemCar_areaCadastroSemCar_dpUC_txtText_Input", :with => unidade)
-        sleep(7)
+        sleep(10)
         find(".TituloItem", text: "Coordenadas").click
         find(:id, "__tab_ctl00_conteudo_TabNavegacao_TBArea").click
         select("GUARULHOS", :from => "ctl00$conteudo$TabNavegacao$TBArea$ProjetoAreaSemCar$TabNavegacao$TBCadastroSemCar$areaCadastroSemCar$ddlMunicipio")
