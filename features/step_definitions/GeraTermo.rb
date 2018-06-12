@@ -21,12 +21,12 @@ Dado("que esteja tela de cadastro do Sare") do
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Representante legal", tipoPessoa = "Física")
     PreencheSare.AlteraSituacao(usuario)
     PreencheSare.GeraTermo(usuario,tipoTermo = "TCRE")
-    PreencheSare.DesenhaPropSare
-    PreencheSare.InsereCamposProp
-    PreencheSare.NaoExiste
+    #PreencheSare.DesenhaPropSare
+    #PreencheSare.InsereCamposProp
+    #PreencheSare.NaoExiste
     #PreencheSare.DesenhaRestauracao
   end
   Então("o sistema criará o Projeto SARE") do
     numeroSare = find(:id, "ctl00_conteudo_lblNumeroSARE").text
-    puts("Termo finalizado: " + numeroSare)
+    puts("Termo: " + numeroSare)
   end
