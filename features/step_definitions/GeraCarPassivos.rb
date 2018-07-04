@@ -47,7 +47,7 @@ Dado("que esteja no cadastro do CAR") do
   end                                                                          
                                                                                
   Então("o sistema criará o CAR para Passivos") do                             
-   #InsereDados.final
-    #@numCar = find(:id, "ctl00_conteudo_lblCAR").text
-	  #puts("CAR Excedente criado com sucesso no ambiente de Teste e seu número é: " +  @numCar)
+   InsereDados.final
+    @numCar = find(:id, "ctl00_conteudo_lblCAR").text
+	  puts("CAR Excedente criado com sucesso no ambiente de Teste e seu número é: " +  @numCar)
   end                                                                          

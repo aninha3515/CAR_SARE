@@ -1,8 +1,6 @@
 require 'faker'
 usuario = "55613853720"
-#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
-
 Dado("que esteja cadastrando o CAR") do                                      
     visit(link)
     RealizaLogin.acesso(usuario)
