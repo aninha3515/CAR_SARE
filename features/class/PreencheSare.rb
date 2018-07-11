@@ -11,7 +11,7 @@ class PreencheSare
         find(:id, "ctl00_conteudo_TabNavegacao_TBCadastro_ProjetoCadastroSemCar_PesqProcesso_cmdExibeGrid").click
         #preenche o grid secundário
         fill_in("ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$PesqProcesso$txtFiltroAnoProcesso", :with => anoProcesso)
-        find(:link, "Pesquisar").click
+        first(:link, "Pesquisar").click
         find(:id, "ctl00_conteudo_TabNavegacao_TBCadastro_ProjetoCadastroSemCar_PesqProcesso_gvConsulta_ctl02_rbRefDocumento").click
         numProcesso = find("#ctl00_conteudo_TabNavegacao_TBCadastro_ProjetoCadastroSemCar_PesqProcesso_txtNumProcesso").value
         puts("O processo vinculado é o : " + numProcesso)
