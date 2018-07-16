@@ -135,6 +135,11 @@ end
 
 			if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 
+				textoNascente = "Nascentes e Veredas"
+				textoLagoLagoa = "Lago e Lagoa Natural"
+				textoRLCompensacao = "Reserva Legal de Compensação"
+
+
 				flegaArea = find('.ModuloAlternado', text: textoServidaoAdm)
 				flegaArea.find('input[type=checkbox]').click
 
@@ -175,7 +180,7 @@ end
 				flegaArea.find('input[type=checkbox]').click
 			end
 
-			if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
+			if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/" 
 
 				textoNascente = "Nascentes e Veredas"
 				textoLagoLagoa = "Lago e Lagoa Natural"
