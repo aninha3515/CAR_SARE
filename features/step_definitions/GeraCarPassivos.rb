@@ -1,5 +1,5 @@
 require 'faker'
-usuario = "55613853720"
+usuario = "karinaac"
 link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
 
 

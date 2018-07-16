@@ -39,7 +39,7 @@ end
 				fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBRepLegal$carRepLegal$pesPessoa$CPFCNPJ", :with => cpfPessoa)
 				find(:link, "Confirmar").click
 				sleep(2)
-				find("input[id*=chkPodeAlterar]").click
+				first("input[id*=chkPodeAlterar]").click
 			end
 		sleep(5)
 		find(:link, "Salvar", visible: true).click
