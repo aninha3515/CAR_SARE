@@ -10,8 +10,10 @@ class InsereDados
 			puts("Não existe CAR para este usuário, criando seu primeiro CAR")
 		end
 	#fim da validação
-    find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_rblTipo_0").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_chkPropriedade_0").click
+	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_rblTipo_0").click
+	choose("Rural")
+	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_chkPropriedade_0").click
+	check("Propriedade")
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$nomPropriedade', :with => nomeCAR)
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$desEndereco', :with => "Av Professor Frederico Hermann JR")
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$nomBairro', :with => "Alto de Pinheiros")
