@@ -19,6 +19,8 @@ class PreencheSare
         fill_in("ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$txtEndereco", :with => "Rua Automatizada")
         select("GUARULHOS", :from => "ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$ddlMunicipio")
         find(:link, "Atualizar").click
+        numeroSare = find(:id, "ctl00_conteudo_lblNumeroSARE").text
+        puts("Termo: " + numeroSare + " sendo gerado...")
     end
 
     def PreencheSare.Pessoa(nomPessoa,funcaoPessoa,tipoPessoa)

@@ -14,8 +14,6 @@ Dado("que esteja tela de cadastro do Sare") do
   
   Quando("preencher todos os campos do projeto") do
     PreencheSare.CadastroInicial(nomeSare = "Projeto GW " +  Faker::Name.first_name, link)
-    numeroSare = find(:id, "ctl00_conteudo_lblNumeroSARE").text
-    puts("Termo: " + numeroSare + " sendo gerado...")
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Compromissário", tipoPessoa = "Jurídica")
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Compromissário", tipoPessoa = "Física")
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Representante legal", tipoPessoa = "Física")

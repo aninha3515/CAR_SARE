@@ -9,8 +9,6 @@ Dado("que esteja na tela do CAR") do
 end
 Quando("preencher todas as informações necessarias") do
 	InsereDados.inicio(nomeCAR = "Exc GW Fazenda " +  Faker::Name.first_name)
-	numProtocolo = find(:id, "ctl00_conteudo_lblID").text
-	puts("Car sendo gerado... Número do Protocolo: " + numProtocolo)
 	find(:id, "__tab_ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDeclaracao").click
 	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDeclaracao_carDeclaracao_gvConsulta_ctl07_chkDeclara").click
 	InsereDados.InserePessoa(cpfPessoa = "88258394800", permissao = "Tecnico")

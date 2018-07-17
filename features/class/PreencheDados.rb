@@ -11,9 +11,11 @@ class InsereDados
 		end
 	#fim da validação
 	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_rblTipo_0").click
-	choose("Rural")
+
 	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_chkPropriedade_0").click
-	check("Propriedade")
+	choose("Rural")
+	InsereDados.tipoPropriedade
+
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$nomPropriedade', :with => nomeCAR)
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$desEndereco', :with => "Av Professor Frederico Hermann JR")
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$nomBairro', :with => "Alto de Pinheiros")
@@ -21,10 +23,20 @@ class InsereDados
 	select('ILHABELA', :from => 'ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$ddlMunicipio')
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$numArea', :with => "2702")
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$area2008', :with => "2702")
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_chkAtividade_1").click
-	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_rblQualificacao_0").click
+	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_chkAtividade_1").click
+	choose("Criação Animal")
+	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_rblQualificacao_0").click
 	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_cmdAtualiza").click
+	numProtocolo = find(:id, "ctl00_conteudo_lblID").text
+	puts("Car sendo gerado... Número do Protocolo: " + numProtocolo)
 end
+
+	def InsereDados.tipoPropriedade
+		#check("Posse")
+		#choose("Posseiro")
+		check("Propriedade")
+		choose("Proprietário")
+	end
 
 	def InsereDados.InserePessoa(cpfPessoa,permissao)
 		find(:link, "Domínio").click
@@ -62,6 +74,7 @@ end
 		find(:link, "Mapa").click
 		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl02_btnGeo").click
 		#Inicio da Iteração com Iframe
+		sleep(3)
 		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
 		find("[title='Desenhar forma']").click
 		#map = o local onde será realizado o desenho

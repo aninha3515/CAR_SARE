@@ -9,8 +9,6 @@ Dado("que esteja cadastrando o CAR") do
 end                                                                          
                                                                                
   Quando("preencher todos os campos") do                                       
-    numProtocolo = find(:id, "ctl00_conteudo_lblID").text
-    puts("Car sendo gerado... Número do Protocolo: " + numProtocolo)
     find(:id, "__tab_ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDeclaracao").click
     find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDeclaracao_carDeclaracao_gvConsulta_ctl07_chkDeclara").click
     #InsereDados.InserePessoa(cpfPessoa = "88258394800", permissao = "Tecnico") # cpf da maracs
