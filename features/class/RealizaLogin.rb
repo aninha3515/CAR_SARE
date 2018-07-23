@@ -7,6 +7,13 @@ class RealizaLogin
 		sleep(3)
 		find(:id, "ctl00_lnkLogo").click
 	end
+	def RealizaLogin.logoff
+		sleep(3)
+        find(:id, "ctl00_cmdLogin").click
+        find(:link, "aqui").click
+        sleep(2)
+		puts("Deslogado com sucesso do ambiente!")
+	end
 end
 
 #usuarios

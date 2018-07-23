@@ -74,7 +74,7 @@ end
 		find(:link, "Mapa").click
 		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl02_btnGeo").click
 		#Inicio da Iteração com Iframe
-		sleep(3)
+		sleep(5)
 		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
 		find("[title='Desenhar forma']").click
 		#map = o local onde será realizado o desenho
