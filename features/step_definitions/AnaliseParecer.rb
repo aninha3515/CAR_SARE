@@ -1,9 +1,9 @@
 require 'faker'
 usuario = "55613853720"
-#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
+link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
 #link = "http://exec-dev01.sma.local/sigam-homologacao1"
 #link = "http://exec-dev01.sma.local/sigam-adequacao-testS3/"
-link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
+#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 
 Dado("que o CAR esteja como Inscrito") do
    visit(link)
@@ -163,7 +163,7 @@ Dado("que o CAR esteja como Inscrito") do
     else
         puts("Algo deu errado!, acesse o CAR " + @numCar + " para verificar")
     end
-    
+
 
   end
   
