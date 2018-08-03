@@ -1,7 +1,7 @@
 require 'faker'
-usuario = "karinaac"
-link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
-#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
+usuario = "55613853720"
+#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
+link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 
 
 Dado("que esteja no cadastro do CAR") do                                     
