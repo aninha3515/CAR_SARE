@@ -48,6 +48,7 @@ class PreencheSare
         fill_in("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBCadastroPessoas$pesPessoa$EmailConfirma", :with => emailPessoa)
 
             if funcaoPessoa == "Representante legal"
+                check("Responsável pela assinatura do Termo")
                 find("[title='Grava os dados da Pessoa']").click
                 textoPopUp = page.driver.browser.switch_to.alert.text
                 puts (textoPopUp)
