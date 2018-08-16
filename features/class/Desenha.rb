@@ -133,9 +133,14 @@ class Desenha
         end
         map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
 		page.driver.browser.action.move_to(map,coordenadas[0],coordenadas[1]).click.perform
+	    sleep(5)
 		page.driver.browser.action.move_to(map,coordenadas[2],coordenadas[3]).click.perform
+	    sleep(5)
 		page.driver.browser.action.move_to(map,coordenadas[4],coordenadas[5]).click.perform
+	   sleep(5) 
 		page.driver.browser.action.move_to(map,coordenadas[6],coordenadas[7]).click.perform
+	    sleep(5)
+	    
     end
     
     def Desenha.SalvaPoligono(tipo)
