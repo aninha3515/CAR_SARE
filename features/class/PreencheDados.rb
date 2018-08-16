@@ -74,15 +74,19 @@ end
 		find(:link, "Mapa").click
 		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl02_btnGeo").click
 		#Inicio da Iteração com Iframe
-		sleep(5)
+		sleep(10)
 		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
 		find("[title='Desenhar forma']").click
 		#map = o local onde será realizado o desenho
 		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
 		page.driver.browser.action.move_to(map,565, 354).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,625, 343).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,623, 380).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,564, 359).click.perform
+		sleep(2)
 		#Fecha a iteração com o Iframe
 
 		#clica na opção salvar
@@ -250,9 +254,13 @@ end
 		find("[title='Desenhar forma']").click
 		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
 		page.driver.browser.action.move_to(map,664, 236).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,748, 229).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,753, 276).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,669, 283).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,666, 241).click.perform
 		sleep(10)
 		#inicio da interação com o iframe de atributos
