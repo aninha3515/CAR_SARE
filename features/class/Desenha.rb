@@ -126,8 +126,9 @@ class Desenha
 
         if tipo == "RiosMedia"
             find("[title='Desenhar linha']").click
-        elsif tipo == "Nascente" || tipo == "NascenteVereda"
-            find("[title='Desenhar nascente difusa']").click
+            elsif tipo == "Nascente" || tipo == "NascenteVereda"
+                    sleep(5)
+                find("[title='Desenhar nascente difusa']").click
         else
         find("[title='Desenhar forma']").click
         end
