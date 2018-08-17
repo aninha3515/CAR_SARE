@@ -18,6 +18,7 @@ end
 
 #usuarios
 		#Usuario Externo = 55613853720
+		#usuario Externo = 03416907833
 		#CAR Técnico = karinaac
 		#SARE Técnica = renatam
 		#SARE ADM = leilacm
