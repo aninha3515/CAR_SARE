@@ -7,11 +7,11 @@ Dado("que o CAR esteja como Inscrito") do
     visit(link)
     RealizaLogin.acesso(usuario)
     InsereDados.inicio(nomeCAR = "Def GW Fazenda " +  Faker::Name.first_name)
-	InsereDados.InserePessoa(cpfPessoa = "88258394800", permissao = "Tecnico")
-	InsereDados.InserePessoa(cpfPessoa = "03416907833", permissao = "Representante")
-	InsereDados.AnexaProcuracao
-	InsereDados.DesenhaPropriedade
-	InsereDados.NaoExiste(link)
+    InsereDados.InserePessoa(cpfPessoa = "88258394800", permissao = "Tecnico")
+    InsereDados.InserePessoa(cpfPessoa = "03416907833", permissao = "Representante")
+    InsereDados.AnexaProcuracao
+    InsereDados.DesenhaPropriedade
+    InsereDados.NaoExiste(link)
     InsereDados.final
     @numCar = find(:id, "ctl00_conteudo_lblCAR").text
     puts("CAR Deficitário criado com sucesso no ambiente de homologação e seu número é: " +  @numCar)
@@ -37,6 +37,5 @@ Dado("que o CAR esteja como Inscrito") do
   end
   
   Então("o CAR estará disponível para analisar") do
-    AnaliseParec.ConcluiAnalise(@numCar)
+    AnaliseParec.ConcluiAnalise
   end
-  
