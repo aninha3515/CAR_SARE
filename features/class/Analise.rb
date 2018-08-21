@@ -106,16 +106,16 @@ class AnaliseParec
         find(:link, "Salvar respostas do Parecer").click
     end
 
-    def AnaliseParec.ConcluiAnalise
+    def AnaliseParec.ConcluiAnalise(numCar)
         find(:link, "Iniciar/Concluir Análise").click
         find(:link, "Verificar Problemas").click
         verificaProblema = find("#ctl00_conteudo_TabContainer1_TBIniciar_carAnalise_lblMensagem", visible:true).text
     
         if verificaProblema == "Análise verificado com sucesso! Nenhum problema Encontrado!"
             puts(verificaProblema)
-            puts("CAR Deficitário de número: " +  @numCar + " disponível para análise")
+            puts("CAR Deficitário de número: " +  numCar + " disponível para análise")
         else
-            puts("Algo deu errado!, acesse o CAR " + @numCar + " para verificar")
+            puts("Algo deu errado!, acesse o CAR " + numCar + " para verificar")
         end
     end
 end

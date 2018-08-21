@@ -37,5 +37,5 @@ Dado("que o CAR esteja como Inscrito") do
   end
   
   Então("o CAR estará disponível para analisar") do
-    AnaliseParec.ConcluiAnalise
+    AnaliseParec.ConcluiAnalise(@numCar)
   end

@@ -103,7 +103,7 @@ class Desenha
                 flegaArea.first(:css, 'a[href]').click
                 sleep(5)
                 page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
-                find("[title='Inserir nascente pontual']").click
+                find("[title='Adicionar marcador']").click
                 map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
                 page.driver.browser.action.move_to(map,628,195).click.perform
                 sleep(5)
@@ -126,8 +126,6 @@ class Desenha
 
         if tipo == "RiosMedia"
             find("[title='Desenhar linha']").click
-            elsif tipo == "NascenteVereda"
-                find("[title='Desenhar nascente difusa']").click
         else
         find("[title='Desenhar forma']").click
         end
