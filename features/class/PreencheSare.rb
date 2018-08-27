@@ -1,6 +1,6 @@
 require 'faker'
 require "cpf_cnpj"
-require "RubyXL"
+require "rubyXL"
 class PreencheSare
 
     def PreencheSare.CadastroInicial(nomeSare,link)
