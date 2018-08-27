@@ -152,7 +152,7 @@ end
 				flegaArea.find('input[type=checkbox]').click
 			end
 
-			if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
+			if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/" || link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car"
 
 				textoNascente = "Nascentes e Veredas"
 				textoLagoLagoa = "Lago e Lagoa Natural"
