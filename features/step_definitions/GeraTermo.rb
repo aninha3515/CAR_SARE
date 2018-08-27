@@ -1,6 +1,7 @@
 require 'faker'
 #link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
-link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
+#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car"
+link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car"
 
 usuario = "karinaac"
 Dado("que esteja tela de cadastro do Sare") do
@@ -16,12 +17,12 @@ Dado("que esteja tela de cadastro do Sare") do
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Compromissário", tipoPessoa = "Jurídica")
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Compromissário", tipoPessoa = "Física")
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Representante legal", tipoPessoa = "Física")
+    PreencheSare.DesenhaPropSare
+    PreencheSare.InsereCamposProp
+    PreencheSare.NaoExiste
+    PreencheSare.DesenhaRestauracao
     PreencheSare.AlteraSituacao(usuario)
     PreencheSare.GeraTermo(usuario,tipoTermo = "TCRE")
-    #PreencheSare.DesenhaPropSare
-    #PreencheSare.InsereCamposProp
-    #PreencheSare.NaoExiste
-    #PreencheSare.DesenhaRestauracao
   end
   Então("o sistema criará o Projeto SARE") do
     numeroSare = find(:id, "ctl00_conteudo_lblNumeroSARE").text
