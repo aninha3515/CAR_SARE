@@ -138,7 +138,7 @@ class Desenha
 	   sleep(5) 
 		page.driver.browser.action.move_to(map,coordenadas[6],coordenadas[7]).click.perform
 	    sleep(5)
-	    
+	    Desenha.verificaPopUp
     end
     
     def Desenha.SalvaPoligono(tipo)
@@ -216,7 +216,8 @@ class Desenha
             sleep(5)
             page.driver.browser.switch_to.frame(0)
             sleep(5)
-            select("Mangue", :from => "ctl01$ddlAPP")
+            #select("Mangue", :from => "ctl01$ddlAPP")            
+            select("APP Lei 4.771/1965", :from => "ctl01$ddlAPP")
             sleep(5)
             find(:link, "Salvar Atributos").click
             sleep(5)

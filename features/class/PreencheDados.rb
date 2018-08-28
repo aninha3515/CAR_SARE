@@ -95,9 +95,41 @@ end
 		page.driver.browser.switch_to.alert.accept
 		find(:id, "ucCARAreaMapa_btnFechaMapaInclusao").click
 		sleep(5)
+	end
+	
+	def InsereDados.DesenhaPropriedadeMenor4
+		find(:link, "Mapa").click
+		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl02_btnGeo").click
+		#Inicio da Iteração com Iframe
+		sleep(10)
+		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+	
+		find("[title='Aumentar o zoom']").click
+		find("[title='Aumentar o zoom']").click
+		sleep(3)
+		find("[title='Desenhar forma']").click
+		sleep(2)
+		#map = o local onde será realizado o desenho
+		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
+		page.driver.browser.action.move_to(map,565, 354).click.perform
+		sleep(2)
+		page.driver.browser.action.move_to(map,625, 343).click.perform
+		sleep(2)
+		page.driver.browser.action.move_to(map,623, 380).click.perform
+		sleep(2)
+		page.driver.browser.action.move_to(map,564, 359).click.perform
+		sleep(2)
+		#Fecha a iteração com o Iframe
+
+		#clica na opção salvar
+		find("[title='Clique para salvar o estado do mapa']").click
+		sleep(10)
+		page.driver.browser.switch_to.alert.accept
+		find(:id, "ucCARAreaMapa_btnFechaMapaInclusao").click
+		sleep(5)
     end
 
-    def InsereDados.NaoExiste(link)
+    def InsereDados.NaoExiste(link,artigo)
 		#seleciona "Não Existe"
 		textoServidaoAdm = "Servidão Administrativa"
 		textoRiosMais = "Rios com mais de 3 metros de largura média"
@@ -177,14 +209,26 @@ end
 				flegaArea = find('.ModuloAlternado', text: textoOutrosCorpos)
 				flegaArea.find('input[type=checkbox]').click
 
-				flegaArea = find('.ModuloItem', text: textoOutrasApps)
-				flegaArea.find('input[type=checkbox]').click
+				if artigo == "4771"
+					puts("Não Marca " + textoOutrasApps)
+				else
+					flegaArea = find('.ModuloItem', text: textoOutrasApps)
+					flegaArea.find('input[type=checkbox]').click
+				end
 
-				flegaArea = find('.ModuloItem', text: textoVegetacao)
-				flegaArea.find('input[type=checkbox]').click
+				if artigo == "4771"
+					puts("Não Marca " + textoVegetacao)
+				else
+					flegaArea = find('.ModuloItem', text: textoVegetacao)
+					flegaArea.find('input[type=checkbox]').click
+				end
 
-				flegaArea = find('.ModuloAlternado', text: textoReservaLegal)
-				flegaArea.find('input[type=checkbox]').click
+				if artigo == "4771"
+					puts("Não Marca " + textoReservaLegal)
+				else
+					flegaArea = find('.ModuloAlternado', text: textoReservaLegal)
+					flegaArea.find('input[type=checkbox]').click
+				end
 
 				flegaArea = find('.ModuloItem', text: textoDeclividade)
 				flegaArea.find('input[type=checkbox]').click

@@ -1,12 +1,13 @@
 require 'faker'
 usuario = "55613853720"
 #link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
-#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
-link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car"
+link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
+#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car"
+
 Dado("que esteja cadastrando o CAR") do                                      
     visit(link)
     RealizaLogin.acesso(usuario)
-    InsereDados.inicio(nomeCAR = "Exc GW Fazenda " +  Faker::Name.first_name)
+    InsereDados.inicio(nomeCAR = "Exc GW MapaComp Fazenda " +  Faker::Name.first_name)
 end                                                                          
                                                                                
   Quando("preencher todos os campos") do                                       
@@ -38,5 +39,5 @@ end
   Então("o sistema criará o CAR completo") do                                
     InsereDados.final
     @numCar = find(:id, "ctl00_conteudo_lblCAR").text
-	  puts("CAR Excedente criado com sucesso no ambiente de Teste e seu número é: " +  @numCar)
+	  puts("CAR Excedente criado com sucesso no ambiente " + link + " e seu número é: " +  @numCar)
   end                                                                          
