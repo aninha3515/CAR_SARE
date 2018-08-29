@@ -3,7 +3,7 @@ require 'faker'
 link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 #link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car"
 
-usuario = "karinaac"
+usuario = "55613853720"
 Dado("que esteja tela de cadastro do Sare") do
    visit(link)
    RealizaLogin.acesso(usuario)
@@ -21,8 +21,11 @@ Dado("que esteja tela de cadastro do Sare") do
     PreencheSare.InsereCamposProp
     PreencheSare.NaoExiste
     PreencheSare.DesenhaRestauracao
-    PreencheSare.AlteraSituacao(usuario)
-    PreencheSare.GeraTermo(usuario,tipoTermo = "TCRE")
+    RealizaLogin.logoff
+    RealizaLogin.acesso(usuario = "karinaac")
+    PreencheSare.RetornaSare
+    PreencheSare.AlteraSituacao(usuario = "karinaac")
+    PreencheSare.GeraTermo(usuario = "karinaac" ,tipoTermo = "TCRE")
   end
   Então("o sistema criará o Projeto SARE") do
     numeroSare = find(:id, "ctl00_conteudo_lblNumeroSARE").text

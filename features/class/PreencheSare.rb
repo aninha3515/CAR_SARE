@@ -20,8 +20,8 @@ class PreencheSare
         fill_in("ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$txtEndereco", :with => "Rua Automatizada")
         select("GUARULHOS", :from => "ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$ddlMunicipio")
         find(:link, "Atualizar").click
-        numeroSare = find(:id, "ctl00_conteudo_lblNumeroSARE").text
-        puts("Termo: " + numeroSare + " sendo gerado...")
+        @numeroSare = find(:id, "ctl00_conteudo_lblNumeroSARE").text
+        puts("Termo: " + @numeroSare + " sendo gerado...")
     end
 
     def PreencheSare.Pessoa(nomPessoa,funcaoPessoa,tipoPessoa)
@@ -76,7 +76,16 @@ class PreencheSare
 
     end
 
+    def PreencheSare.RetornaSare
+        numeroSare = @numeroSare
+        find("[src='imagens/logo/SARE.png']").click
+        find(:link, "Análise Técnica (interno)").click
+        RealizaBusca.Sare(numeroSare)
+        find("[alt='Editar']").click
+    end
+
     def PreencheSare.AlteraSituacao(usuario)
+        puts("O projeto " + @numeroSare + " Está sendo alterado por " + usuario)
             if (usuario == "leilacm" || usuario == "karinaac" || usuario == "gtiadm")
                 find("[title='Analise']").click
                 find("[title='Adiciona uma nova Análise']").click
