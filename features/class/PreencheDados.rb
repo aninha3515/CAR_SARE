@@ -343,7 +343,6 @@ end
 		page.driver.browser.switch_to.frame(0)
 		find("[id*='cmdVincularNovo']").click
 		find("[id*='txtnumCARVinculado']").set(numCarDeficitario)
-		binding.pry
 		areaRestante = "101,2566"
 		find("[id*='txtArea']").set(areaRestante)
 		find("[id*='cmdAtualizaCarVnculado']").click

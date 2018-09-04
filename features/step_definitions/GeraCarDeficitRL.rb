@@ -39,7 +39,6 @@ Então("o CAR estará com deficit de RL") do
     @numCarExcedente = find(:id, "ctl00_conteudo_lblCAR").text
     puts("CAR Excedente de RL criado com sucesso no ambiente " + link + " e seu número é: " +  @numCarExcedente)
     InsereDados.SolicitaAlteracao
-    binding.pry
     InsereDados.VinculaCAR(numCarDeficitario = @numCarDeficitario)
     puts("O car deficitário de número " + @numCarDeficitario + "foi vinculado no car deficitário: " + @numCarExcedente)
 end
