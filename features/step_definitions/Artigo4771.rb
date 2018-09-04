@@ -25,5 +25,5 @@ Quando("Desenhar os polígonos para o artigo") do
 end
   
 Então("o CAR estará disponível com o artigo") do
-    InsereDados.final
+    InsereDados.final(possuiAreas = "")
 end

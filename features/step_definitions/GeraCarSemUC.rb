@@ -16,7 +16,7 @@ Quando("preencher todas as informações requeridas") do
 	InsereDados.AnexaProcuracao
 	InsereDados.DesenhaPropriedade
 	InsereDados.NaoExiste(link, artigo = "")
-	InsereDados.final
+	InsereDados.final(possuiAreas = "")
 end
 
 Então("o sistema criará o CAR sem UC em Homlog") do

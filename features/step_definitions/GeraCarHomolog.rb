@@ -18,7 +18,7 @@ Quando("preencher todas as informações necessarias") do
 	InsereDados.DesenhaPropriedade
 	InsereDados.NaoExiste(link, artigo = "")
 	InsereDados.DesenhaUC(usuario)
-	InsereDados.final
+	InsereDados.final(possuiAreas = "")
 end
 Então("o sistema criará o CAR UC em Homlog") do
 	@numCar = find(:id, "ctl00_conteudo_lblCAR").text

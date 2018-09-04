@@ -13,7 +13,7 @@ Dado("que o CAR esteja como Inscrito") do
     InsereDados.AnexaProcuracao
     InsereDados.DesenhaPropriedade
     InsereDados.NaoExiste(link, artigo = "")
-    InsereDados.final
+    InsereDados.final(possuiAreas = "")
     @numCar = find(:id, "ctl00_conteudo_lblCAR").text
     puts("CAR Deficitário criado com sucesso no ambiente de homologação e seu número é: " +  @numCar)
   end

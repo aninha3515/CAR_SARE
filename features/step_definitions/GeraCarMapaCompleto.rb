@@ -37,7 +37,7 @@ end
   end                                                                          
                                                                                
   Então("o sistema criará o CAR completo") do                                
-    InsereDados.final
+    InsereDados.final(possuiAreas = "")
     @numCar = find(:id, "ctl00_conteudo_lblCAR").text
 	  puts("CAR Excedente criado com sucesso no ambiente " + link + " e seu número é: " +  @numCar)
   end                                                                          

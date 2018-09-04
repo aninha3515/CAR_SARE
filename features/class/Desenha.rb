@@ -96,6 +96,47 @@ class Desenha
         Desenha.SalvaPoligono(tipo)
     end
 
+    def Desenha.Importa(tipoImportacao)
+
+        textoReservaLegal = "Reserva Legal"
+        textoRLCompensacao = "Reserva Legal de Compensação"
+        textoServidaoAmb = "Servidão Ambiental"
+
+        if tipoImportacao == "ReservaLegal"
+            flegaArea = find('.ModuloAlternado', text: textoReservaLegal)
+            flegaArea.first(:css, 'a[href]').click
+            page.driver.browser.switch_to.frame(1)
+            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ReservaLegal_414601.zip'))
+            sleep(5)
+            find("[value=Importar]").click
+            sleep(5)
+            find(:link, "Sair do Mapa").click
+         end
+
+         if tipoImportacao == "RLCompensacao"
+            flegaArea = find('.ModuloItem', text: textoRLCompensacao)
+            flegaArea.first(:css, 'a[href]').click
+            page.driver.browser.switch_to.frame(1)
+            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ReservaLegalCompensacao_414601.zip'))
+            sleep(5)
+            find("[value=Importar]").click
+            sleep(5)
+            find(:link, "Sair do Mapa").click
+         end
+
+         
+         if tipoImportacao == "ServidaoAmb"
+            flegaArea = find('.ModuloAlternado', text: textoServidaoAmb)
+            flegaArea.first(:css, 'a[href]').click
+            page.driver.browser.switch_to.frame(1)
+            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ServidaoAmbiental_414601.zip'))
+            sleep(5)
+            find("[value=Importar]").click
+            sleep(5)
+            find(:link, "Sair do Mapa").click
+         end
+    end
+
     def Desenha.Ponto(tipo)
         textoNascente = "Nascentes e Veredas"
             if tipo == "NascentePonto"
@@ -330,7 +371,6 @@ class Desenha
             Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             sleep(5)
-
             find(:link, "Sair do Mapa").click
             sleep(5)
         end

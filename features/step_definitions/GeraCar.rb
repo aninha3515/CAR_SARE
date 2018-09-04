@@ -19,7 +19,7 @@ Quando("preencher todas as informações") do
 	InsereDados.DesenhaPropriedade
 	InsereDados.NaoExiste(link, artigo = "")
 	InsereDados.DesenhaUC(usuario)
-	InsereDados.final
+	InsereDados.final(possuiAreas = "")
 end
 
 Então("o sistema criará o CAR") do
