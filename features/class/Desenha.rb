@@ -109,10 +109,10 @@ class Desenha
             attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ReservaLegal_414601.zip'))
             sleep(5)
             find("[value=Importar]").click
-		Desenha.verificaPopUp
+		    Desenha.verificaPopUp
             sleep(5)
             find(:link, "Sair do Mapa").click
-		Desenha.verificaPopUp
+		    Desenha.verificaPopUp
          end
 
          if tipoImportacao == "RLCompensacao"
@@ -122,11 +122,10 @@ class Desenha
             attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ReservaLegalCompensacao_414601.zip'))
             sleep(5)
             find("[value=Importar]").click
-		 Desenha.verificaPopUp
+		    Desenha.verificaPopUp
             sleep(5)
             find(:link, "Sair do Mapa").click
-		
-		 Desenha.verificaPopUp
+		    Desenha.verificaPopUp
          end
 
          
@@ -138,10 +137,9 @@ class Desenha
             sleep(5)
             find("[value=Importar]").click
             sleep(5)
-		 Desenha.verificaPopUp
+		    Desenha.verificaPopUp
             find(:link, "Sair do Mapa").click
-		 
-		 Desenha.verificaPopUp
+		    Desenha.verificaPopUp
          end
     end
 

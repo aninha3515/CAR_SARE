@@ -344,6 +344,8 @@ end
 		find("[id*='cmdVincularNovo']").click
 		find("[id*='txtnumCARVinculado']").set(numCarDeficitario)
 		areaRestante = "101,2566"
+		find("[id*='txtArea']").click
+		sleep(2)
 		find("[id*='txtArea']").set(areaRestante)
 		find("[id*='cmdAtualizaCarVnculado']").click
 		find(:link, "Salvar Atributos").click
