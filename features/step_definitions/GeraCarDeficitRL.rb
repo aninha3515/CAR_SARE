@@ -40,5 +40,5 @@ Então("o CAR estará com deficit de RL") do
     puts("CAR Excedente de RL criado com sucesso no ambiente " + link + " e seu número é: " +  @numCarExcedente)
     InsereDados.SolicitaAlteracao
     InsereDados.VinculaCAR(numCarDeficitario = @numCarDeficitario)
-    puts("O car deficitário de número " + @numCarDeficitario + "foi vinculado no car deficitário: " + @numCarExcedente)
+    puts("O car deficitário de número " + @numCarDeficitario + "foi vinculado no car Excedente: " + @numCarExcedente)
 end
