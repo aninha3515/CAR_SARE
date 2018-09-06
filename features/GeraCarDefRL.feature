@@ -9,7 +9,7 @@ Funcionalidade: Gerar Car com Deficit de RL
   Quero executar um script
   Para criar um car com Deficit de RL
 
-@deslogar_sigam @tira_print
+  @tira_print
 
   Cenario: Criar CAR deficitario RL
   	Dado que esteja criando o CAR deficitario

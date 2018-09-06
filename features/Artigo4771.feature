@@ -9,7 +9,7 @@ Funcionalidade: Aderir ao Artigo 4771
   Quero executar um script
   Para criar um car com Artigo 4771
 
-@deslogar_sigam @tira_print
+  @tira_print
 
   Cenario: Car com artigo 4771
   	Dado que esteja criando o CAR
