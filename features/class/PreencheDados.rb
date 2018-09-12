@@ -323,6 +323,14 @@ end
 		Desenha.verificaPopUp
 	end
 
+	def InsereDados.ObtemDeficit
+		first("[id*='AdequacaoAmbiental']", visible: true).click
+		sleep(2)
+		find(:link, "Reserva Legal").click
+		sleep(2)
+		@areaRestante = find("[id*='totalDeficit']").text
+	end
+
 	def InsereDados.VinculaCAR(numCarDeficitario)
 
 		textoReservaLegal = "Reserva Legal"
@@ -341,10 +349,9 @@ end
 		sleep(3)
 		find("[id*='cmdVincularNovo']").click
 		find("[id*='txtnumCARVinculado']").set(numCarDeficitario)
-		areaRestante = "101,2566"
 		find("[id*='txtArea']").click
 		sleep(2)
-		find("[id*='txtArea']").set(areaRestante)
+		find("[id*='txtArea']").set(@areaRestante)
 		find("[id*='cmdAtualizaCarVnculado']").click
 		find(:link, "Salvar Atributos").click
 		sleep(5)

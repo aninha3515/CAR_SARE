@@ -20,6 +20,7 @@ Quando("Desenhar os polígonos de RL") do
     InsereDados.final(possuiAreas = "")
     @numCarDeficitario = find(:id, "ctl00_conteudo_lblCAR").text
     puts("CAR Deficitário RL criado com sucesso no ambiente " + link + " e seu número é: " +  @numCarDeficitario)
+    InsereDados.ObtemDeficit
     RealizaLogin.logoff
 end
   
