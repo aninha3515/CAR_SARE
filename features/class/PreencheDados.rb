@@ -335,9 +335,7 @@ end
 		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
 		find("[title*='sobre o elemento selecionado']", visible: true, match: :first).click
 		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
-		binding.pry
-		#page.driver.browser.action.move_to(map,557,261).click.perform
-		page.driver.browser.action.move_to(map,664,319).click.perform
+		page.driver.browser.action.move_to(map,800,250).click.perform
 		sleep(5)
 		page.driver.browser.switch_to.frame(0)
 		sleep(3)
