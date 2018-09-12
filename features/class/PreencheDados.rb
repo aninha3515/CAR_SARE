@@ -341,6 +341,7 @@ end
 		page.driver.browser.action.move_to(map,557,261).click.perform
 		sleep(5)
 		page.driver.browser.switch_to.frame(0)
+		sleep(3)
 		find("[id*='cmdVincularNovo']").click
 		find("[id*='txtnumCARVinculado']").set(numCarDeficitario)
 		areaRestante = "101,2566"
