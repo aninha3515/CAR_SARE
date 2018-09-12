@@ -342,7 +342,9 @@ end
 		sleep(5)
 		page.driver.browser.switch_to.frame(0)
 		sleep(3)
+		page.save_screenshot('log/shots/AntesVinculaCar.png')
 		find("[id*='cmdVincularNovo']").click
+		page.save_screenshot('log/shots/DepoisVinculaCar.png')
 		find("[id*='txtnumCARVinculado']").set(numCarDeficitario)
 		areaRestante = "101,2566"
 		find("[id*='txtArea']").click
