@@ -108,7 +108,7 @@ class Desenha
 
         if tipoImportacao == "Propriedade"
             find(:link, "Desenhar")
-            page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+            page.driver.browser.switch_to.frame(1)
             find("[title='Aumentar o zoom']").click
             find("[title='Aumentar o zoom']").click
             find("[title='Aumentar o zoom']").click
