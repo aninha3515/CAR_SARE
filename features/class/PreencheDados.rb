@@ -1,6 +1,6 @@
 require 'faker'
 class InsereDados
-	def InsereDados.inicio(nomeCAR)
+	def InsereDados.inicio(nomeCAR,muni)
 	first(".Atendimento", text: "SiCAR/SP", visible: true).click
 	#Validação para identificar se já possui CAR
 		if assert_text("Cadastrar Nova Propriedade")
@@ -10,9 +10,6 @@ class InsereDados
 			puts("Não existe CAR para este usuário, criando seu primeiro CAR")
 		end
 	#fim da validação
-	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_rblTipo_0").click
-
-	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_chkPropriedade_0").click
 	choose("Rural")
 	InsereDados.tipoPropriedade
 
@@ -20,7 +17,7 @@ class InsereDados
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$desEndereco', :with => "Av Professor Frederico Hermann JR")
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$nomBairro', :with => "Alto de Pinheiros")
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$numCEP', :with => "03259000")
-	select('ILHABELA', :from => 'ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$ddlMunicipio')
+	select(muni, :from => 'ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$ddlMunicipio')
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$numArea', :with => "2702")
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$area2008', :with => "2702")
 	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_chkAtividade_1").click
@@ -338,6 +335,7 @@ end
 		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
 		find("[title*='sobre o elemento selecionado']", visible: true, match: :first).click
 		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
+		binding.pry
 		#page.driver.browser.action.move_to(map,557,261).click.perform
 		page.driver.browser.action.move_to(map,664,319).click.perform
 		sleep(5)

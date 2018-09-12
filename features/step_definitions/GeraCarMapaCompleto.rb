@@ -7,7 +7,7 @@ link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 Dado("que esteja cadastrando o CAR") do                                      
     visit(link)
     RealizaLogin.acesso(usuario)
-    InsereDados.inicio(nomeCAR = "Exc GW MapaComp Fazenda " +  Faker::Name.first_name)
+    InsereDados.inicio(nomeCAR = "Exc GW MapaComp Fazenda " +  Faker::Name.first_name,  muni = "ILHABELA")
 end                                                                          
                                                                                
   Quando("preencher todos os campos") do                                       

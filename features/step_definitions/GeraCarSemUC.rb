@@ -10,7 +10,7 @@ Dado("que esteja preenchendo o cadastro do CAR") do
 end
 
 Quando("preencher todas as informações requeridas") do
-	InsereDados.inicio(nomeCAR = "Def GW SemUC Fazenda " +  Faker::Name.first_name)
+	InsereDados.inicio(nomeCAR = "Def GW SemUC Fazenda " +  Faker::Name.first_name,  muni = "ILHABELA")
 	InsereDados.InserePessoa(cpfPessoa = "88258394800", permissao = "Tecnico")
 	InsereDados.InserePessoa(cpfPessoa = "03416907833", permissao = "Representante")
 	InsereDados.AnexaProcuracao

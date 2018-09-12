@@ -7,7 +7,7 @@ link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 Dado("que o CAR esteja como Inscrito") do
     visit(link)
     RealizaLogin.acesso(usuario)
-    InsereDados.inicio(nomeCAR = "Def GW Fazenda " +  Faker::Name.first_name)
+    InsereDados.inicio(nomeCAR = "Def GW Fazenda " +  Faker::Name.first_name, muni = "ILHABELA")
     InsereDados.InserePessoa(cpfPessoa = "88258394800", permissao = "Tecnico")
     InsereDados.InserePessoa(cpfPessoa = "03416907833", permissao = "Representante")
     InsereDados.AnexaProcuracao

@@ -8,7 +8,7 @@ link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 Dado("que esteja no cadastro do CAR") do                                     
     visit(link)
     RealizaLogin.acesso(usuario)
-    InsereDados.inicio(nomeCAR = "Exc GW Pass Fazenda " +  Faker::Name.first_name)
+    InsereDados.inicio(nomeCAR = "Exc GW Pass Fazenda " +  Faker::Name.first_name,  muni = "ILHABELA")
   end                                                                          
                                                                                
   Quando("preencher os dados padroes") do                                      

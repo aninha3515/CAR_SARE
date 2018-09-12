@@ -10,7 +10,7 @@ Dado("que esteja na tela de cadastro do CAR") do
 end
 
 Quando("preencher todas as informações") do
-	InsereDados.inicio(nomeCAR = "Exc GW UC Fazenda " +  Faker::Name.first_name)
+	InsereDados.inicio(nomeCAR = "Exc GW UC Fazenda " +  Faker::Name.first_name,  muni = "ILHABELA")
 	find(:id, "__tab_ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDeclaracao").click
 	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDeclaracao_carDeclaracao_gvConsulta_ctl07_chkDeclara").click
 	InsereDados.InserePessoa(cpfPessoa = "88258394800", permissao = "Tecnico") # cpf da maracs

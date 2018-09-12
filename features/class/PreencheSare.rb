@@ -86,7 +86,7 @@ class PreencheSare
 
     def PreencheSare.AlteraSituacao(usuario)
         puts("O projeto " + @numeroSare + " Está sendo alterado por " + usuario)
-            if (usuario == "leilacm" || usuario == "karinaac" || usuario == "gtiadm")
+            if (usuario == "leilacm" || usuario == "karinaac" || usuario == "gtiadm" || usuario == "rosilened")
                 find("[title='Analise']").click
                 find("[title='Adiciona uma nova Análise']").click
                 find("#ctl00_conteudo_TabNavegacao_TBAnalise_projetoAnalise_TabStatus_TabStatusProjeto_btnDataSituacao").click

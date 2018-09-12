@@ -98,15 +98,36 @@ class Desenha
 
     def Desenha.Importa(tipoImportacao)
 
+        textoPropriedade = "Propriedade"
         textoReservaLegal = "Reserva Legal"
         textoRLCompensacao = "Reserva Legal de Compensação"
         textoServidaoAmb = "Servidão Ambiental"
+
+
+        find(:link, "Mapa").click
+
+        if tipoImportacao == "Propriedade"
+            find(:link, "Desenhar")
+            page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+            find("[title='Aumentar o zoom']").click
+            find("[title='Aumentar o zoom']").click
+            find("[title='Aumentar o zoom']").click
+            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/Propriedade_415692.zip'))
+            sleep(5)
+            find("[value=Importar]").click
+		    Desenha.verificaPopUp
+            sleep(5)
+            find(:link, "Sair do Mapa").click
+		    Desenha.verificaPopUp
+        end
+
+        
 
         if tipoImportacao == "ReservaLegal"
             flegaArea = find('.ModuloAlternado', text: textoReservaLegal)
             flegaArea.first(:css, 'a[href]').click
             page.driver.browser.switch_to.frame(1)
-            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ReservaLegal_414601.zip'))
+            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ReservaLegal_415692.zip'))
             sleep(5)
             find("[value=Importar]").click
 		    Desenha.verificaPopUp
@@ -119,7 +140,7 @@ class Desenha
             flegaArea = find('.ModuloItem', text: textoRLCompensacao)
             flegaArea.first(:css, 'a[href]').click
             page.driver.browser.switch_to.frame(1)
-            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ReservaLegalCompensacao_414601.zip'))
+            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ReservaLegalCompensacao_415692.zip'))
             sleep(5)
             find("[value=Importar]").click
 		    Desenha.verificaPopUp
@@ -133,7 +154,7 @@ class Desenha
             flegaArea = find('.ModuloAlternado', text: textoServidaoAmb)
             flegaArea.first(:css, 'a[href]').click
             page.driver.browser.switch_to.frame(1)
-            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ServidaoAmbiental_414601.zip'))
+            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ServidaoAmbiental_415692.zip'))
             sleep(5)
             find("[value=Importar]").click
             sleep(5)
