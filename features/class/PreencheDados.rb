@@ -182,7 +182,7 @@ end
 					flegaArea.find('input[type=checkbox]').click
 				end
 
-				if artigo == "4771" || artigo == "Def_RL" || artigo == "Exc_RL"
+				if artigo == "4771" || artigo == "Def_RL" || artigo == "Exc_RL" || artigo == "PRADA"
 					puts("Não Marca " + textoReservaLegal)
 				else
 					flegaArea = find('.ModuloAlternado', text: textoReservaLegal)
