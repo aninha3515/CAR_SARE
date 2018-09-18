@@ -323,7 +323,6 @@ end
 		date = date.day.to_s + mes.to_s +  date.year.to_s
 		first("[id*='txtDataFinal']").click
 		first("[id*='txtDataFinal']").set(date)
-		binding.pry
 		find("[id*='cmdAtualizaCarVnculado']").click
 		find(:link, "Salvar Atributos").click
 		sleep(5)
