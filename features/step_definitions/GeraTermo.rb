@@ -29,5 +29,5 @@ Dado("que esteja tela de cadastro do Sare") do
   end
   Então("o sistema criará o Projeto SARE") do
     numeroSare = find(:id, "ctl00_conteudo_lblNumeroSARE").text
-    puts("Termo: " + numeroSare + " Gerado no link: " + link)
+    puts("Projeto: " + numeroSare + " Gerado no link: " + link)
   end
