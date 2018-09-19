@@ -313,16 +313,12 @@ end
 		find("[id*='txtArea']").click
 		sleep(2)
 		find("[id*='txtArea']").set(@areaRestante)
-		first("[id*='txtDataInicial']").click
-		first("[id*='txtDataInicial']").set("23032001")
-		date = Time.new
-		mes = date.month.to_i
-			if (mes < 10)
-				mes = "0" + mes.to_s
-			end
-		date = date.day.to_s + mes.to_s +  date.year.to_s
-		first("[id*='txtDataFinal']").click
-		first("[id*='txtDataFinal']").set(date)
+		find("[id*='bdatDataInicial']").click
+		find("[id*='cetDataInicial_prevArrow']").click
+		inseredia = 20
+		find(".ajax__calendar_day", text: inseredia).click
+		find("[id*='bdatDataFinal']").click
+		find("[id*='cetDataFinal_today']").click
 		find("[id*='cmdAtualizaCarVnculado']").click
 		find(:link, "Salvar Atributos").click
 		sleep(5)
