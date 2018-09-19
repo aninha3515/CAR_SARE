@@ -19,8 +19,8 @@ Dado("que possua um CAR com áreas a recompor") do
 end
   
 Quando("finalizar o cadastro do CAR") do
-    @numCarExcedente = find(:id, "ctl00_conteudo_lblCAR").text
-    puts("CAR Excedente de RL criado com sucesso no ambiente " + link + " e seu número é: " +  @numCarExcedente)
+    @numCarPrada = find(:id, "ctl00_conteudo_lblCAR").text
+    puts("CAR com Prada criado com sucesso no ambiente " + link + " e seu número é: " +  @numCarPrada)
 end
 
 E("finalizar a adequação ambiental") do
