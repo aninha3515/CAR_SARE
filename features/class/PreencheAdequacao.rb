@@ -21,9 +21,13 @@ class PreencheAdequacao
         choose("Não", visible: true)
     end
 
-    def PreencheAdequacao.PassivosAmbientais
+    def PreencheAdequacao.PassivosAmbientais(criaProjeto)
         find("[title='Passivos Ambientais']").click
-        choose("Sim", visible: true)
+            if (criaProjeto == "PRADA")
+                choose("Sim", visible: true)
+            else
+                choose("Não", visible: true)
+            end
         desenhaProp2008 = find(".ModuloAlternado", text: "Propriedade em 2008")
         desenhaProp2008.find(:css, "a[href]").click
         page.driver.browser.switch_to.frame(1)
@@ -38,6 +42,7 @@ class PreencheAdequacao
     def PreencheAdequacao.Finalizar
         find("[id*='FinalizarAdequacao']").click
         find("[id*='CARAdequacaoFinaliza_cmdFinaliza']").click
+        Desenha.verificaPopUp
         Desenha.verificaPopUp
     end
 end

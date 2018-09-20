@@ -1,6 +1,6 @@
-Before do
-puts("Iniciando os testes pelo código automatizado")
-end
+#Before do
+#puts("Iniciando os testes pelo código automatizado")
+#end
 
 After('@tira_print') do
     page.save_screenshot('log/shots/temp.png')
