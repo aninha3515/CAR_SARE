@@ -1,5 +1,5 @@
 Dado("que esteja na tela de login") do
-    visit("http://exec-dev01.sma.local/SMA-EST-CAR_test/")
+    visit("http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/")
     find('.Login').click
   end
   
@@ -20,7 +20,7 @@ Dado("que esteja na tela de login") do
   end
   
   Dado("que esteja na tela de login do sistema") do
-    visit("http://exec-dev01.sma.local/SMA-EST-CAR_test/")
+    visit("http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/")
     find('.Login').click
   end
   
@@ -36,6 +36,6 @@ Dado("que esteja na tela de login") do
     find(:id, "login").click
     resultado = assert_text("Erro: Nome de usuário ou senha inválido")
       if (resultado)
-          puts("Erro: Nome de usuário ou senha inválido")
+          puts("Mensagem apresentada: Erro: Nome de usuário ou senha inválido")
       end
   end
