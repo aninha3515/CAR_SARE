@@ -8,7 +8,7 @@ class PreencheSare
         #aba Cadastro
         select('Exigência da CETESB', :from => 'ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$ddlMotivo')
         fill_in("ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$nomProjeto", :with => nomeSare)
-        anoProcesso = "2017"
+        anoProcesso = "2016"
         find(:id, "ctl00_conteudo_TabNavegacao_TBCadastro_ProjetoCadastroSemCar_PesqProcesso_cmdExibeGrid").click
         #preenche o grid secundário
         fill_in("ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$PesqProcesso$txtFiltroAnoProcesso", :with => anoProcesso)

@@ -15,5 +15,5 @@ After do |scenario|
     nome_cenario = nome_cenario.gsub(' ', ' ').downcase!
     print = "log/shots/#{nome_cenario}.png"
     page.save_screenshot(print)
-    embed(print, 'image/png', 'Execução')
+    embed(print, 'image/png', 'Evidência da Execução')
 end
