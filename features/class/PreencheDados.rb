@@ -228,15 +228,6 @@ end
 		sleep(10)
 		#inicio da interação com o iframe de atributos
 		page.driver.browser.switch_to.frame(0)
-		#validacao para interagir com campos, caso seja o usuário da marianab
-			if usuario == "marianab"
-				processo = "1919601" #idProcesso EST-CAR: 1919501
-				select("Cerrado", :from => "ctl01$ddlBioma")
-				sleep(5)
-				fill_in("ctl01$txtIdentificadorDoProcesso", :with => processo)
-				sleep(5)
-				find(:id, "ctl01_txtProcessoAno").click
-			end
 		sleep(7)
 		find(:link, "Salvar Atributos").click
 		sleep(10)
@@ -245,7 +236,63 @@ end
 		page.driver.browser.switch_to.frame(1)
 		find(:link, "Sair do Mapa").click
 		sleep(10)
-    end
+	end
+	
+	def InsereDados.VinculaUC(numCarDef)
+		sleep(3) 
+		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+        find("[title*='sobre o elemento selecionado']", visible: true, match: :first).click
+        map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
+		page.driver.browser.action.move_to(map,664, 236).click.perform
+		sleep(3)
+		page.driver.browser.switch_to.frame(0)
+		sleep(2)
+        areaUC = find("[id*='lblAreaTotal']").text
+        find(:link, "Vincular CAR").click
+        find("[name*='txtnumCARVinculado']").set(numCarDef)
+        find("[id*='txtArea']").click
+        find("[id*='txtArea']").set(areaUC)
+        find(:link, "Vincular").click
+        sleep(3)
+        find(:link, "Salvar Atributos").click
+        sleep(3)
+        page.driver.browser.switch_to.frame(1)
+		find(:link, "Sair do Mapa").click
+        sleep(5)
+	end
+
+	def InsereDados.AlteraProcessoAptidao(usuario,numCar)
+		textoAreaEmUC = "Área Inserida em UC"
+		first(".Atendimento", text: "SiCAR/SP", visible: true).click
+		find(:link, "Consulta Gerencial").click
+		RealizaBusca.CAR(numCar)
+		first(:link, "Analisar").click
+		first("[id*='TBArea']", text: "Mapa").click
+		flegaArea = first('.ModuloItem', text: textoAreaEmUC)
+		flegaArea.first(:css, 'a[href]').click
+		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+		find("[title*='sobre o elemento selecionado']", visible: true, match: :first).click
+		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
+		page.driver.browser.action.move_to(map,664, 236).click.perform
+		sleep(2)
+		page.driver.browser.switch_to.frame(0)
+			if (usuario == "marianab")
+				processo = "1919601" #idProcesso
+				find("option[value='HABILITADA']").click
+				sleep(5)
+				fill_in("ctl01$txtIdentificadorDoProcesso", :with => processo)
+				sleep(5)
+				find(:id, "ctl01_txtProcessoAno").click
+			end
+			sleep(3)
+			find(:link, "Salvar Atributos").click
+			sleep(5)
+			#Fim da interação com o iframe de atributos
+			#retorna para o iframe do desenho
+			page.driver.browser.switch_to.frame(1)
+			find(:link, "Sair do Mapa").click
+			sleep(5)
+	end
 
     def InsereDados.final(possuiAreas)
 		#clica na aba Domínio
@@ -272,11 +319,15 @@ end
 		sleep(5)
 		end
 
-	def InsereDados.SolicitaAlteracao
+	def InsereDados.SolicitaAlteracao(alteracao)
 		find("[title=Alterar]").click
 		find("[id*=cmdAltera]").click
 		Desenha.verificaPopUp
-		select("Acrescentar Anexos", :from => "ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBFinaliza$carFinaliza$ddlMotivo")
+			if (alteracao == "UC")
+				first("option[value='617']", visible: true).click
+			else
+				select("Acrescentar Anexos", :from => "ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBFinaliza$carFinaliza$ddlMotivo")
+			end
 		find("textarea[id*='desMotivo']").set("Teste Automatiazado")
 		find("a[id*='cmdSolicita']").click
 		Desenha.verificaPopUp

@@ -38,7 +38,7 @@ E("um CAR Excedente") do
 end
   
 Quando("realizar o vínculo") do
-    InsereDados.SolicitaAlteracao
+    InsereDados.SolicitaAlteracao(alteracao = "")
     InsereDados.VinculaCAR(numCarDeficitario = @numCarDeficitario)
 end
   
