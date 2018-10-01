@@ -46,14 +46,14 @@ Quando("realiazar o vínculo de UC") do
     RealizaLogin.logoff
     RealizaLogin.acesso(usuario = "55613853720")
     first(".Atendimento", text: "SiCAR/SP", visible: true).click
-    binding.pry
+
     RealizaBusca.CarUsuarioExterno(numCar = @numCarExcedenteUC)
     first(:link, "Consultar").click
     InsereDados.SolicitaAlteracao(alteracao = "UC")
     find(:link, "Mapa").click
     flegaArea = find('.ModuloItem', text: textoAreaEmUC)
     flegaArea.first(:css, 'a[href]').click
-    binding.pry
+  
     InsereDados.VinculaUC(numCarDef = @numCarDeficitUC)
     find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBFinaliza_spanFinalizar").click
 	find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBFinaliza_carFinaliza_cmdFinaliza").click
