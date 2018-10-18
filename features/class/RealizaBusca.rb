@@ -21,4 +21,11 @@ class RealizaBusca
         choose("Todas Unidades")
         first(:link, "Pesquisar").click
     end
+
+    def RealizaBusca.SareUsuarioExt(numeroSare)
+        select("Número SARE", :from => "ctl00_conteudo_ctl00_SqlWhere_fields")
+        fill_in("onetext_1", with:  numeroSare, :match => :prefer_exact)
+        click_button("Adiciona")
+        first(:link, "Pesquisar").click
+    end
 end
