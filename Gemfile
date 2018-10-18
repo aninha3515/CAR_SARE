@@ -20,3 +20,7 @@ gem "cpf_cnpj"
 gem "blabla"
 gem 'rspec-retry'
 gem 'capybara_table'
+gem 'pg'
+gem 'sqlite3'
+gem 'mysql2'
+gem 'tiny_tds'
