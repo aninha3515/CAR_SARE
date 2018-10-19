@@ -9,11 +9,6 @@ require 'tiny_tds'
     end
 
     def ConectaBanco.consulta
-        #login = "karinaac"
-        #results = @client.execute("SELECT idPessoa from Usuario where nomLogin = '#{login}'")  
-        #results.each do |linha|  
-        #puts linha  
-        #end
         projeto = "25571"
         results = @client.execute("SELECT idTermo from [SMA-EST-CAR_test].dbo.[SARETERMO] where idProjeto = '#{projeto}'")  
         results.each do |linha|  
