@@ -18,7 +18,7 @@ namespace :massa do
   task :GerarMassa do
     vezes.times do |x|
       p "VEZES: #{x}"
-      sh 'cucumber -t @GeraTermoSare'
+      sh 'cucumber -t @GeraCarDeficitRL'
     end
   end
 end

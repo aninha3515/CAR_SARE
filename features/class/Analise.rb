@@ -108,7 +108,9 @@ class AnaliseParec
 
     def AnaliseParec.ConcluiAnalise(numCar)
         find(:link, "Iniciar/Concluir Análise").click
+        Desenha.verificaPopUp
         find(:link, "Verificar Problemas").click
+        Desenha.verificaPopUp
         verificaProblema = find("#ctl00_conteudo_TabContainer1_TBIniciar_carAnalise_lblMensagem", visible:true).text
     
         if verificaProblema == "Análise verificado com sucesso! Nenhum problema Encontrado!"
