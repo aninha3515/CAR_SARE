@@ -315,7 +315,7 @@ end
 		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBFinaliza_carFinaliza_flaNotificaEmail").click
 		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBFinaliza_carFinaliza_cmdFinaliza").click
 		sleep(5)
-		page.driver.browser.switch_to.alert.accept
+		Desenha.verificaPopUp
 		Desenha.verificaPopUp
 		sleep(5)
 		end

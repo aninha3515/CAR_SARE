@@ -47,7 +47,7 @@ E("anexar os documentos") do
     find("[id*='ucAnexo_cmdAtualiza']").click
     Desenha.verificaPopUp
     sleep(3)
-
+    find(:link, "Termo", visible: true, :match => :first).click
     find("[id*='TBSubTermos']", visible: true, :match => :first).click
     situacaoTermo = find("#ctl00_conteudo_TabNavegacao_TBTermo_sareTermo_TabNavegacaoTermo_TBSubTermos_gvPesquisa > tbody > tr.ModuloItem > td:nth-child(12)").text
     puts("Termo alterado para a situação: " + situacaoTermo)
@@ -70,6 +70,7 @@ E("anexar os documentos") do
     find("[id*='desConteudo']").set("Inserindo anexo pelo teste automatizado...")
     find("[id*='ucAnexo_cmdAtualiza']").click
     Desenha.verificaPopUp
+    find(:link, "Termo", visible: true, :match => :first).click
     find("[id*='TBSubTermos']", visible: true, :match => :first).click
 end
   
