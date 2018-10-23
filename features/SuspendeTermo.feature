@@ -8,6 +8,8 @@ Funcionalidade: Suspender Termo
   Quero executar um script
   Para criar Termos e deixa-los suspensos
 
+  @tira_print
+
   Cenario: Suspender Termo após prazo expirado
   	Dado que possua termo na situacao disponível para asssinatura
   	Quando o prazo para assinatura vencer

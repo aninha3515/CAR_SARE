@@ -42,6 +42,7 @@ Dado("que possua termo na situacao disponível para asssinatura") do
     find("[id*='ucAnexo_cmdAtualiza']").click
     Desenha.verificaPopUp
     sleep(3)
+    find(:link, "Termo", visible: true, :match => :first).click
     find("[id*='TBSubTermos']", visible: true, :match => :first).click
     situacaoTermo = find("#ctl00_conteudo_TabNavegacao_TBTermo_sareTermo_TabNavegacaoTermo_TBSubTermos_gvPesquisa > tbody > tr.ModuloItem > td:nth-child(12)").text
     puts("Termo alterado para a situação: " + situacaoTermo)
@@ -70,6 +71,7 @@ Então("o sistema deverá alterar o termo para suspenso") do
     numeroSare = @numeroSareGlobal
     RealizaBusca.SareUsuarioExt(numeroSare)
     find("[id*='cmdEdita']", visible: true).click
+    binding.pry
     find("[id*='TBTermo']", visible: true, :match => :first).click
     TermoSuspenso = find("#ctl00_conteudo_TabNavegacao_TBTermo_sareTermo_TabNavegacaoTermo_TBSubTermos_gvPesquisa > tbody > tr.ModuloItem > td:nth-child(9)").text
     puts("Situação do Termo alterada para: " + TermoSuspenso)
