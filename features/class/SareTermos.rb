@@ -29,9 +29,9 @@ class SareTermos
         if(sitAlterada == "DispAssinatura")
             situacaoTermo = find("#ctl00_conteudo_TabNavegacao_TBTermo_sareTermo_TabNavegacaoTermo_TBSubTermos_gvPesquisa > tbody > tr.ModuloItem > td:nth-child(12)").text
         end
-        if(sitAlterada == "firmado")
+        if(sitAlterada == "firmado" || sitAlterada == "suspenso")
             situacaoTermo = find("#ctl00_conteudo_TabNavegacao_TBTermo_sareTermo_TabNavegacaoTermo_TBSubTermos_gvPesquisa > tbody > tr.ModuloItem > td:nth-child(9)").text
-        end   
+        end  
         puts("Termo alterado para a situação: " + situacaoTermo)
     end
 end

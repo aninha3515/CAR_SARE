@@ -6,9 +6,7 @@ link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car"
 Dado("que possua termo na situacao disponível para asssinatura") do
     visit(link)
     RealizaLogin.acesso(usuario)
-    find(:id,"ctl00_lnkLogo").click
-    find("[src='imagens/logo/SARE.png']").click
-    find(:id, "ctl00_conteudo_ctl00_rptrMenu_ctl00_imgLogo").click
+    PreencheSare.AcessaCadastraProjetos
     PreencheSare.CadastroInicial(nomeSare = "Projeto GW " +  Faker::Name.first_name, link)
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Compromissário", tipoPessoa = "Jurídica")
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Compromissário", tipoPessoa = "Física")
@@ -29,7 +27,7 @@ Dado("que possua termo na situacao disponível para asssinatura") do
     termoGrid = find("#ctl00_conteudo_TabNavegacao_TBTermo_sareTermo_TabNavegacaoTermo_TBSubTermos_gvPesquisa > tbody > tr.ModuloItem > td:nth-child(6)").text
     numTermoConvertido = termoGrid.sub(/TCRE nº /, '')
     SareTermos.AbaArquivos(numTermoConvertido,tipoAnexo = "TermoOrgaoEmissor")
-    SareTermos.SituacaoTermo
+    SareTermos.SituacaoTermo(sitAlterada = "DispAssinatura")
 end
   
 Quando("o prazo para assinatura vencer") do
@@ -44,12 +42,8 @@ Então("o sistema deverá alterar o termo para suspenso") do
     ExecutaRobo.SuspendeTermo
     visit(link)
     RealizaLogin.acesso(usuario = "55613853720")
-    find(:id,"ctl00_lnkLogo").click
-    find("[src='imagens/logo/SARE.png']").click
-    find(:id, "ctl00_conteudo_ctl00_rptrMenu_ctl01_imgLogo").click
+    PreencheSare.AcessaMeusProjetos
     numeroSare = @numeroSareGlobal
     RealizaBusca.SareUsuarioExt(numeroSare)
-    find("[id*='TBTermo']", visible: true, :match => :first).click
-    TermoSuspenso = find("#ctl00_conteudo_TabNavegacao_TBTermo_sareTermo_TabNavegacaoTermo_TBSubTermos_gvPesquisa > tbody > tr.ModuloItem > td:nth-child(9)").text
-    puts("Situação do Termo alterada para: " + TermoSuspenso)
+    SareTermos.SituacaoTermo(sitAlterada = "suspenso")
 end
