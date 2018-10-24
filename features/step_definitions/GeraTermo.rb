@@ -1,7 +1,7 @@
 require 'faker'
-#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
-link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
-#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car"
+
+#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
+link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car"
 
 usuario = "55613853720"
 Dado("que esteja tela de cadastro do Sare") do
