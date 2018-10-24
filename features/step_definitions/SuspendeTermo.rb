@@ -41,12 +41,7 @@ end
   
 Então("o sistema deverá alterar o termo para suspenso") do
     RealizaLogin.logoff
-    linkRobo = "http://exec-dev01.sma.local/SMA-EST-CAR_test/WebServices/SareTermos.asmx"
-    visit(linkRobo)
-    find(:link, "Termo_Suspenso").click
-    click_button("Invoke")
-    sleep(5)
-    VerificaAbas.fechaAbas
+    ExecutaRobo.SuspendeTermo
     visit(link)
     RealizaLogin.acesso(usuario = "55613853720")
     find(:id,"ctl00_lnkLogo").click
@@ -54,7 +49,6 @@ Então("o sistema deverá alterar o termo para suspenso") do
     find(:id, "ctl00_conteudo_ctl00_rptrMenu_ctl01_imgLogo").click
     numeroSare = @numeroSareGlobal
     RealizaBusca.SareUsuarioExt(numeroSare)
-    find("[id*='cmdEdita']", visible: true).click
     find("[id*='TBTermo']", visible: true, :match => :first).click
     TermoSuspenso = find("#ctl00_conteudo_TabNavegacao_TBTermo_sareTermo_TabNavegacaoTermo_TBSubTermos_gvPesquisa > tbody > tr.ModuloItem > td:nth-child(9)").text
     puts("Situação do Termo alterada para: " + TermoSuspenso)

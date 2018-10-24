@@ -215,4 +215,16 @@ class PreencheSare
         find(:link, "Fechar").click
         sleep(5)
     end
+
+    def PreencheSare.AcessaMeusProjetos
+        find(:id,"ctl00_lnkLogo").click
+        find("[src='imagens/logo/SARE.png']").click
+        find(:id, "ctl00_conteudo_ctl00_rptrMenu_ctl01_imgLogo").click
+    end
+
+    def PreencheSare.AcessaCadastraProjetos
+        find(:id,"ctl00_lnkLogo").click
+        find("[src='imagens/logo/SARE.png']").click
+        find(:id, "ctl00_conteudo_ctl00_rptrMenu_ctl00_imgLogo").click
+    end
 end

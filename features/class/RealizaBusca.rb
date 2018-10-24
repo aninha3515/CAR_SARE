@@ -27,5 +27,6 @@ class RealizaBusca
         fill_in("onetext_1", with:  numeroSare, :match => :prefer_exact)
         click_button("Adiciona")
         first(:link, "Pesquisar").click
+        find("[id*='cmdEdita']", visible: true).click
     end
 end
