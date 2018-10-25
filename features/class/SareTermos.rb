@@ -12,6 +12,12 @@ class SareTermos
             anexo = "Termo assinado"
         end
 
+        if(tipoAnexo == "JustificativaTermo")
+            Desenha.verificaPopUp
+            sleep(3)
+            anexo = "Justificativa do Termo – Prazo expirado"
+        end
+
         find("[name*='ddlTipoAnexo']").find(:option, anexo).text
         find("[name*='ddlTipoAnexo']").find(:option, anexo).select_option
 
