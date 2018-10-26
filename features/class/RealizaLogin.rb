@@ -24,4 +24,3 @@ end
 		#SARE ADM = leilacm
 		#03416907833 - usuario externo
 		#Técnico SAA = 31245419870	- Amanda Hernandes Stefani
-		#Teste do Koritar
