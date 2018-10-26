@@ -23,11 +23,39 @@ class SareRetificacao
         end
     end
 
+    def SareRetificacao.AbaArquivos(tipoAnexoRetif)
+        find("[id*='TBTermo']", visible: true, :match => :first).click
+        find("[id*='TBRetificacao']", visible: true, :match => :first).click
+        retificacaoGrid = find("#ctl00_conteudo_TabNavegacao_TBTermo_sareTermo_TabNavegacaoTermo_TBRetificacao_SareTermoRetificacao_gvPesquisa > tbody > tr.ModuloItem > td:nth-child(6)").text
+        @RetificacaoConvertida = retificacaoGrid.sub(/0/, '')
+        
+
+        find("[id*='TabNavegacaoTermo_TBAnexo']", visible: true, :match => :first).click
+        find("[id*='ucAnexo_cmdAdiciona']").click
+
+        if(tipoAnexoRetif == "RetifOrgaoEmissor")
+            anexo = "Retificação assinada somente pelo órgão emissor"
+        end
+
+        find("[name*='ddlTipoAnexo']").find(:option, anexo).text
+        find("[name*='ddlTipoAnexo']").find(:option, anexo).select_option
+        find("[name*='ddlNumeroDoc']").find(:option, @RetificacaoConvertida).select_option
+        find("[id*='desConteudo']").set("Inserindo anexo pelo teste automatizado...")
+        attach_file('ctl00$conteudo$TabNavegacao$TBTermo$sareTermo$TabNavegacaoTermo$TBAnexo$ucAnexo$fileUpload$ctl02', File.absolute_path('anexos/Teste.pdf'))
+        find("[id*='ucAnexo_cmdAtualiza']").click
+        Desenha.verificaPopUp
+        sleep(3)
+    end
+
     def SareRetificacao.SituacaoRetificacao(sitAlterada)
         find(:link, "Termo", visible: true, :match => :first).click
         find("[id*='TBRetificacao']", visible: true, :match => :first).click
-        if(sitAlterada == "RetificacaoOrgaoEmissor")
+        if(sitAlterada == "RetificacaoOrgaoEmissor" || sitAlterada == "RetificacaoDisponivelAssinatura")
             situacaoRetif = find("#ctl00_conteudo_TabNavegacao_TBTermo_sareTermo_TabNavegacaoTermo_TBRetificacao_SareTermoRetificacao_gvPesquisa > tbody > tr.ModuloItem > td:nth-child(11)").text
+        end
+
+        if(sitAlterada == "RetificacaoSuspensa")
+            situacaoRetif = find("#ctl00_conteudo_TabNavegacao_TBTermo_sareTermo_TabNavegacaoTermo_TBRetificacao_SareTermoRetificacao_gvPesquisa > tbody > tr.ModuloItem > td:nth-child(8)").text
         end
         puts("Retificacao alterado para a situação: " + situacaoRetif)
     end
