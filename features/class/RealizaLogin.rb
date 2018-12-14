@@ -18,8 +18,9 @@ end
 
 #usuarios
 		#Usuario Externo = 55613853720
+		#usuario Externo = 03416907833
 		#CAR Técnico = karinaac
 		#SARE Técnica = renatam
 		#SARE ADM = leilacm
-		#find(:id, "ctl00_conteudo_ctl00_Panel1").click
 		#03416907833 - usuario externo
+		#Técnico SAA = 31245419870	- Amanda Hernandes Stefani

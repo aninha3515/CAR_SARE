@@ -96,6 +96,72 @@ class Desenha
         Desenha.SalvaPoligono(tipo)
     end
 
+    def Desenha.Importa(tipoImportacao)
+
+        textoReservaLegal = "Reserva Legal"
+        textoRLCompensacao = "Reserva Legal de Compensação"
+        textoServidaoAmb = "Servidão Ambiental"
+
+        find(:link, "Mapa").click
+
+        if tipoImportacao == "Propriedade"
+            find(:link, "Desenhar").click
+            page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+            find("[title='Aumentar o zoom']").click
+            find("[title='Aumentar o zoom']").click
+            find("[title='Aumentar o zoom']").click
+            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/Propriedade_415692.zip'))
+            sleep(5)
+            find("[value=Importar]").click
+		    Desenha.verificaPopUp
+            sleep(5)
+            find(:link, "Sair do Mapa").click
+		    Desenha.verificaPopUp
+        end
+
+        
+
+        if tipoImportacao == "ReservaLegal"
+            flegaArea = find('.ModuloAlternado', text: textoReservaLegal)
+            flegaArea.first(:css, 'a[href]').click
+            page.driver.browser.switch_to.frame(1)
+            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ReservaLegal_415692.zip'))
+            sleep(5)
+            find("[value=Importar]").click
+		    Desenha.verificaPopUp
+            sleep(5)
+            find(:link, "Sair do Mapa").click
+		    Desenha.verificaPopUp
+         end
+
+         if tipoImportacao == "RLCompensacao"
+            flegaArea = find('.ModuloItem', text: textoRLCompensacao)
+            flegaArea.first(:css, 'a[href]').click
+            page.driver.browser.switch_to.frame(1)
+            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ReservaLegalCompensacao_415692.zip'))
+            sleep(5)
+            find("[value=Importar]").click
+		    Desenha.verificaPopUp
+            sleep(5)
+            find(:link, "Sair do Mapa").click
+		    Desenha.verificaPopUp
+         end
+
+         
+         if tipoImportacao == "ServidaoAmb"
+            flegaArea = find('.ModuloAlternado', text: textoServidaoAmb)
+            flegaArea.first(:css, 'a[href]').click
+            page.driver.browser.switch_to.frame(1)
+            attach_file('ucCARAreaMapa_fuShape', File.absolute_path('anexos/ServidaoAmbiental_415692.zip'))
+            sleep(5)
+            find("[value=Importar]").click
+            sleep(5)
+		    Desenha.verificaPopUp
+            find(:link, "Sair do Mapa").click
+		    Desenha.verificaPopUp
+         end
+    end
+
     def Desenha.Ponto(tipo)
         textoNascente = "Nascentes e Veredas"
             if tipo == "NascentePonto"
@@ -103,10 +169,10 @@ class Desenha
                 flegaArea.first(:css, 'a[href]').click
                 sleep(5)
                 page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
-                find("[title='Inserir nascente pontual']").click
+                find("[title='Adicionar marcador']").click
                 map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
                 page.driver.browser.action.move_to(map,628,195).click.perform
-                sleep(3)
+                sleep(5)
                 find(:link, "Sair do Mapa").click
                 sleep(5)
             end
@@ -126,16 +192,19 @@ class Desenha
 
         if tipo == "RiosMedia"
             find("[title='Desenhar linha']").click
-        elsif tipo == "Nascente" || tipo == "NascenteVereda"
-            find("[title='Desenhar nascente difusa']").click
         else
         find("[title='Desenhar forma']").click
         end
         map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
 		page.driver.browser.action.move_to(map,coordenadas[0],coordenadas[1]).click.perform
+	    sleep(5)
 		page.driver.browser.action.move_to(map,coordenadas[2],coordenadas[3]).click.perform
+	    sleep(5)
 		page.driver.browser.action.move_to(map,coordenadas[4],coordenadas[5]).click.perform
+	   sleep(5) 
 		page.driver.browser.action.move_to(map,coordenadas[6],coordenadas[7]).click.perform
+	    sleep(5)
+	    Desenha.verificaPopUp
     end
     
     def Desenha.SalvaPoligono(tipo)
@@ -144,90 +213,91 @@ class Desenha
             find("[title='Clique para salvar o estado do mapa']").click
             sleep(5)
             Desenha.verificaPopUp
-            sleep(3)
+            sleep(5)
             find(:link, "Sair do Mapa").click
             sleep(5)
         end
 
         if tipo == "RiosMais"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
-            sleep(3)
+            sleep(5)
             fill_in("ctl01$txtLarguraRio", :with => "10")
-            sleep(3)
+            sleep(5)
             find(:link, "Salvar Atributos").click
-            sleep(3)
+            sleep(5)
             Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
-            sleep(3)
+            sleep(5)
             find(:link, "Sair do Mapa").click
             sleep(5)
         end
 
         if tipo == "Nascente"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
-            sleep(3)
+            sleep(5)
             choose('Nascente Difusa')
             find(:link, "Salvar Atributos").click
-            sleep(3)
+            sleep(5)
             Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
-            sleep(3)
+            sleep(5)
             find(:link, "Sair do Mapa").click
             sleep(5)
         end
 
         
         if tipo == "NascenteVereda"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
-            sleep(3)
+            sleep(5)
             choose('Vereda')
             find(:link, "Salvar Atributos").click
-            sleep(3)
+            sleep(5)
             Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
-            sleep(3)
+            sleep(5)
             find(:link, "Sair do Mapa").click
             sleep(5)
         end
 
         if tipo == "OutrosCorpos"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
-            sleep(3)
+            sleep(5)
             select("Lago ou Lagoa Artificial", :from => "ctl01$ddlTipoHidro")
             choose('Rural')
-            sleep(3)
+            sleep(5)
             find(:link, "Salvar Atributos").click
-            sleep(3)
+            sleep(5)
             Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
-            sleep(3)
+            sleep(5)
             find(:link, "Sair do Mapa").click
             sleep(5)
         end
         
         if tipo == "OutrasApps"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
-            sleep(3)
-            select("Mangue", :from => "ctl01$ddlAPP")
-            sleep(3)
+            sleep(5)
+            #select("Mangue", :from => "ctl01$ddlAPP")            
+            select("APP Lei 4.771/1965", :from => "ctl01$ddlAPP")
+            sleep(5)
             find(:link, "Salvar Atributos").click
-            sleep(3)
+            sleep(5)
             Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
-            sleep(3)
+            sleep(5)
             find(:link, "Sair do Mapa").click
             sleep(5)
         end
 
         if tipo == "ReservaLegal"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
-            sleep(3)
+            sleep(5)
             choose('ctl01_rblLegal_0') # primeiraOpcao
             sleep(2)
             fill_in("ctl01$txtAno", :with => "2017")
@@ -235,37 +305,37 @@ class Desenha
             fill_in("ctl01$txtNumero", :with => "2017123")
             sleep(2)
             choose("Não")
-            sleep(3)
+            sleep(5)
             find(:link, "Salvar Atributos").click
-            sleep(3)
+            sleep(5)
             Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
-            sleep(3)
+            sleep(5)
             find(:link, "Sair do Mapa").click
             sleep(5)
         end
 
         if tipo == "UsoConsolidado"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
-            sleep(3)
+            sleep(5)
             select("Pasto", :from => "ctl01$ddlTipoUso")
-            sleep(3)
+            sleep(5)
             find(:link, "Salvar Atributos").click
-            sleep(3)
+            sleep(5)
             Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
-            sleep(3)
+            sleep(5)
             find(:link, "Sair do Mapa").click
             sleep(5)
         end
 
         if tipo == "UsoConsolidadoApp"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
-            sleep(3)
+            sleep(5)
             select("Ecoturismo", :from => "ctl01$ddlTipoUso")
-            sleep(3)
+            sleep(5)
             find(:link, "Salvar Atributos").click
             sleep(5)
             Desenha.verificaPopUp
@@ -275,11 +345,11 @@ class Desenha
         end
 
         if tipo == "UsoConsolidadoOutrasApp"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
-            sleep(3)
+            sleep(5)
             select("Ecoturismo", :from => "ctl01$ddlTipoUso")
-            sleep(3)
+            sleep(5)
             find(:link, "Salvar Atributos").click
             sleep(5)
             Desenha.verificaPopUp
@@ -289,7 +359,7 @@ class Desenha
         end
 
         if tipo == "RLCompensacao"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
             choose('ctl01_rblLegal_0')
             sleep(2)
@@ -308,7 +378,7 @@ class Desenha
         end
 
         if tipo == "ServidaoAmb"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
             choose('ctl01_rblLegal_0')
             fill_in("ctl01$txtAno", :with => "2016")
@@ -326,13 +396,12 @@ class Desenha
             Desenha.verificaPopUp
             page.driver.browser.switch_to.frame(1)
             sleep(5)
-
             find(:link, "Sair do Mapa").click
             sleep(5)
         end
 
         if tipo == "AreaEmUC"
-            sleep(3)
+            sleep(5)
             page.driver.browser.switch_to.frame(0)
             sleep(5)
             find(:link, "Salvar Atributos").click

@@ -1,5 +1,6 @@
 require 'faker'
 require "cpf_cnpj"
+require "rubyXL"
 class PreencheSare
 
     def PreencheSare.CadastroInicial(nomeSare,link)
@@ -7,7 +8,7 @@ class PreencheSare
         #aba Cadastro
         select('Exigência da CETESB', :from => 'ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$ddlMotivo')
         fill_in("ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$nomProjeto", :with => nomeSare)
-        anoProcesso = "2017"
+        anoProcesso = "2016"
         find(:id, "ctl00_conteudo_TabNavegacao_TBCadastro_ProjetoCadastroSemCar_PesqProcesso_cmdExibeGrid").click
         #preenche o grid secundário
         fill_in("ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$PesqProcesso$txtFiltroAnoProcesso", :with => anoProcesso)
@@ -19,8 +20,8 @@ class PreencheSare
         fill_in("ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$txtEndereco", :with => "Rua Automatizada")
         select("GUARULHOS", :from => "ctl00$conteudo$TabNavegacao$TBCadastro$ProjetoCadastroSemCar$ddlMunicipio")
         find(:link, "Atualizar").click
-        numeroSare = find(:id, "ctl00_conteudo_lblNumeroSARE").text
-        puts("Termo: " + numeroSare + " sendo gerado...")
+        @numeroSare = find(:id, "ctl00_conteudo_lblNumeroSARE").text
+        puts("Termo: " + @numeroSare + " sendo gerado...")
     end
 
     def PreencheSare.Pessoa(nomPessoa,funcaoPessoa,tipoPessoa)
@@ -48,6 +49,7 @@ class PreencheSare
         fill_in("ctl00$conteudo$TabNavegacao$TBPessoa$ProjetoPessoa$TabNavegacao$TBCadastroPessoas$pesPessoa$EmailConfirma", :with => emailPessoa)
 
             if funcaoPessoa == "Representante legal"
+                check("Responsável pela assinatura do Termo")
                 find("[title='Grava os dados da Pessoa']").click
                 textoPopUp = page.driver.browser.switch_to.alert.text
                 puts (textoPopUp)
@@ -74,8 +76,17 @@ class PreencheSare
 
     end
 
+    def PreencheSare.RetornaSare
+        numeroSare = @numeroSare
+        find("[src='imagens/logo/SARE.png']").click
+        find(:link, "Análise Técnica (interno)").click
+        RealizaBusca.Sare(numeroSare)
+        find("[alt='Editar']").click
+    end
+
     def PreencheSare.AlteraSituacao(usuario)
-            if (usuario == "leilacm" || usuario == "karinaac" || usuario == "gtiadm")
+        puts("O projeto " + @numeroSare + " Está sendo alterado por " + usuario)
+            if (usuario == "leilacm" || usuario == "karinaac" || usuario == "gtiadm" || usuario == "rosilened")
                 find("[title='Analise']").click
                 find("[title='Adiciona uma nova Análise']").click
                 find("#ctl00_conteudo_TabNavegacao_TBAnalise_projetoAnalise_TabStatus_TabStatusProjeto_btnDataSituacao").click
@@ -84,7 +95,7 @@ class PreencheSare
                 select("Em análise", :from => "ctl00$conteudo$TabNavegacao$TBAnalise$projetoAnalise$TabStatus$TabStatusProjeto$ddlSituacao")
                 sleep(3)
                 fill_in("ctl00$conteudo$TabNavegacao$TBAnalise$projetoAnalise$TabStatus$TabStatusProjeto$desAnalise", :with => "Teste Automatizado")
-                find(".BotaoCmd", text: "Finalizar").click
+                find(".BotaoCmd", text: "Finalizar", match: :first, visible: true).click
                 sleep(3)
                 find(:link, "Termo").click
             end
@@ -112,6 +123,9 @@ class PreencheSare
     end
 
     def PreencheSare.DesenhaPropSare
+        workbook = RubyXL::Parser.parse("anexos/Municipios.xlsx")
+        numero = rand(1..688)
+        nomMunicipio = workbook[0].sheet_data[numero][1].value
         find(:id, "__tab_ctl00_conteudo_TabNavegacao_TBArea").click
         find(:id, "ctl00_conteudo_TabNavegacao_TBArea_ProjetoAreaSemCar_cmdInclui").click
         fill_in("ctl00$conteudo$TabNavegacao$TBArea$ProjetoAreaSemCar$TabNavegacao$TBCadastroSemCar$areaCadastroSemCar$nomArea", :with => "Projeto SARE Automatizado")
@@ -123,20 +137,25 @@ class PreencheSare
         sleep(3)
         unidade = "Área de Proteção Ambiental Cabreúva"
         fill_in("ctl00_conteudo_TabNavegacao_TBArea_ProjetoAreaSemCar_TabNavegacao_TBCadastroSemCar_areaCadastroSemCar_dpUC_txtText_Input", :with => unidade)
-        sleep(10)
-        find(".TituloItem", text: "Coordenadas").click
+        sleep(10)        
         find(:id, "__tab_ctl00_conteudo_TabNavegacao_TBArea").click
-        select("GUARULHOS", :from => "ctl00$conteudo$TabNavegacao$TBArea$ProjetoAreaSemCar$TabNavegacao$TBCadastroSemCar$areaCadastroSemCar$ddlMunicipio")
+        select(nomMunicipio, :from => "ctl00$conteudo$TabNavegacao$TBArea$ProjetoAreaSemCar$TabNavegacao$TBCadastroSemCar$areaCadastroSemCar$ddlMunicipio")
         sleep(5)
         find(:id, "ctl00_conteudo_TabNavegacao_TBArea_ProjetoAreaSemCar_TabNavegacao_TBCadastroSemCar_areaCadastroSemCar_cmdAtualiza").click
         find(:link, "Mapa").click
         find(:id, "ctl00_conteudo_TabNavegacao_TBArea_ProjetoAreaSemCar_TabNavegacao_TBMapa_MapaAreaSemCar_gvConsulta_ctl02_btnGeo").click
         page.driver.browser.switch_to.frame("ctl00_conteudo_TabNavegacao_TBArea_ProjetoAreaSemCar_TabNavegacao_TBMapa_MapaAreaSemCar_ifrmMapa")
+        find("[title='Aumentar o zoom']").click
+        find("[title='Aumentar o zoom']").click
         find("[title='Desenhar forma']").click
+        sleep(3)
         map = find(:id, "GMap").native
         page.driver.browser.action.move_to(map,565, 354).click.perform
+        sleep(3)
         page.driver.browser.action.move_to(map,625, 343).click.perform
-	    page.driver.browser.action.move_to(map,623, 380).click.perform
+        sleep(3)
+        page.driver.browser.action.move_to(map,623, 380).click.perform
+        sleep(3)
         page.driver.browser.action.move_to(map,564, 359).click.perform
         sleep(10)
     end
@@ -181,9 +200,13 @@ class PreencheSare
         find("[title='Desenhar forma']").click
         map = find(:id, "GMap").native
         page.driver.browser.action.move_to(map,664, 236).click.perform
+        sleep(3)
         page.driver.browser.action.move_to(map,748, 229).click.perform
+        sleep(3)
         page.driver.browser.action.move_to(map,753, 276).click.perform
+        sleep(3)
         page.driver.browser.action.move_to(map,669, 283).click.perform
+        sleep(3)
         page.driver.browser.action.move_to(map,666, 241).click.perform
         sleep(5)
         find("[title='Clique para salvar o estado do mapa']").click
@@ -191,5 +214,17 @@ class PreencheSare
         page.driver.browser.switch_to.alert.dismiss
         find(:link, "Fechar").click
         sleep(5)
+    end
+
+    def PreencheSare.AcessaMeusProjetos
+        find(:id,"ctl00_lnkLogo").click
+        find("[src='imagens/logo/SARE.png']").click
+        find(:id, "ctl00_conteudo_ctl00_rptrMenu_ctl01_imgLogo").click
+    end
+
+    def PreencheSare.AcessaCadastraProjetos
+        find(:id,"ctl00_lnkLogo").click
+        find("[src='imagens/logo/SARE.png']").click
+        find(:id, "ctl00_conteudo_ctl00_rptrMenu_ctl00_imgLogo").click
     end
 end

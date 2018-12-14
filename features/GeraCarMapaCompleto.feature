@@ -9,7 +9,7 @@ Funcionalidade: Gerar CAR com Mapa Completo
   Quero executar um script
   Para criar que contenha todos os Desenhos
 
-@deslogar_sigam @tira_print
+  @tira_print
 
   Cenario: Gerar Car com todos os polígonos
   	Dado que esteja cadastrando o CAR

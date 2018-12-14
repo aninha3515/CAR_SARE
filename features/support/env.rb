@@ -4,6 +4,9 @@ require 'selenium/webdriver'
 require 'selenium-webdriver'
 require 'capybara/dsl'
 require 'pry'
+require 'pg'
+require 'sqlite3'
+require 'mysql2'
 #require 'site_prism'
 #require 'capybara-screenshot/cucumber'
 
@@ -18,5 +21,5 @@ Capybara.configure do |config|
     config.default_max_wait_time = 30
     Capybara.ignore_hidden_elements = false
     #Capybara.page.driver.browser.manage.window.maximize # - Local
-    Capybara.page.driver.browser.manage.window.resize_to(1366,768) # - CodeShip
+    Capybara.page.driver.browser.manage.window.resize_to(1360,768) # - CodeShip
 end

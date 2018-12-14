@@ -9,7 +9,7 @@ Funcionalidade: Gerar CAR para Passivos
   Quero executar um script
   Para criar car com os polígonos de Passívos
 
-@deslogar_sigam @tira_print
+  @tira_print
 
   Cenario: Gerar Car Passivos
   	Dado que esteja no cadastro do CAR

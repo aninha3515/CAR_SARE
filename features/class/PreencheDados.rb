@@ -1,6 +1,6 @@
 require 'faker'
 class InsereDados
-	def InsereDados.inicio(nomeCAR)
+	def InsereDados.inicio(nomeCAR,muni)
 	first(".Atendimento", text: "SiCAR/SP", visible: true).click
 	#Validação para identificar se já possui CAR
 		if assert_text("Cadastrar Nova Propriedade")
@@ -10,9 +10,6 @@ class InsereDados
 			puts("Não existe CAR para este usuário, criando seu primeiro CAR")
 		end
 	#fim da validação
-	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_rblTipo_0").click
-
-	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_chkPropriedade_0").click
 	choose("Rural")
 	InsereDados.tipoPropriedade
 
@@ -20,7 +17,7 @@ class InsereDados
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$desEndereco', :with => "Av Professor Frederico Hermann JR")
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$nomBairro', :with => "Alto de Pinheiros")
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$numCEP', :with => "03259000")
-	select('ILHABELA', :from => 'ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$ddlMunicipio')
+	select(muni, :from => 'ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$ddlMunicipio')
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$numArea', :with => "2702")
 	fill_in('ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBCadastro$carCadastro$area2008', :with => "2702")
 	#find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBCadastro_carCadastro_chkAtividade_1").click
@@ -45,6 +42,7 @@ end
 				find(".BotaoCmd", text: "Adicionar", visible: true).click
 				fill_in("ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBResponsavel$carPessoa$pesPessoa$CPFCNPJ", :with => cpfPessoa)
 				find(:link, "Confirmar").click
+				select("SMA", :from =>"ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBDominio$carDominio$TabDominio$TBResponsavel$carPessoa$pesPessoa$ddlInstituicao")
 			end
 
 			if permissao == "Representante"
@@ -74,15 +72,51 @@ end
 		find(:link, "Mapa").click
 		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl02_btnGeo").click
 		#Inicio da Iteração com Iframe
-		sleep(5)
+		sleep(10)
 		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
 		find("[title='Desenhar forma']").click
 		#map = o local onde será realizado o desenho
 		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
 		page.driver.browser.action.move_to(map,565, 354).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,625, 343).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,623, 380).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,564, 359).click.perform
+		sleep(2)
+		#Fecha a iteração com o Iframe
+
+		#clica na opção salvar
+		find("[title='Clique para salvar o estado do mapa']").click
+		sleep(10)
+		page.driver.browser.switch_to.alert.accept
+		find(:id, "ucCARAreaMapa_btnFechaMapaInclusao").click
+		sleep(5)
+	end
+	
+	def InsereDados.DesenhaPropriedadeMenor4
+		find(:link, "Mapa").click
+		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_gvConsulta_ctl02_btnGeo").click
+		#Inicio da Iteração com Iframe
+		sleep(10)
+		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+	
+		find("[title='Aumentar o zoom']").click
+		find("[title='Aumentar o zoom']").click
+		sleep(3)
+		find("[title='Desenhar forma']").click
+		sleep(2)
+		#map = o local onde será realizado o desenho
+		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
+		page.driver.browser.action.move_to(map,565, 354).click.perform
+		sleep(2)
+		page.driver.browser.action.move_to(map,625, 343).click.perform
+		sleep(2)
+		page.driver.browser.action.move_to(map,623, 380).click.perform
+		sleep(2)
+		page.driver.browser.action.move_to(map,564, 359).click.perform
+		sleep(2)
 		#Fecha a iteração com o Iframe
 
 		#clica na opção salvar
@@ -93,7 +127,7 @@ end
 		sleep(5)
     end
 
-    def InsereDados.NaoExiste(link)
+    def InsereDados.NaoExiste(link,artigo)
 		#seleciona "Não Existe"
 		textoServidaoAdm = "Servidão Administrativa"
 		textoRiosMais = "Rios com mais de 3 metros de largura média"
@@ -108,47 +142,8 @@ end
 		textoRLCompensacao = "Reserva legal de compensação"
 		textoServidaoAmb = "Servidão Ambiental"
 		textoLagoLagoa = "Lago e Lagoa Natural"
-	
-			if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-homologacao1"
 
-				flegaArea = find('.ModuloAlternado', text: textoServidaoAdm)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoRiosMais)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloItem', text: textoRiosMedia)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoNascente)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloItem', text: textoOutrosCorpos)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoOutrasApps)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoVegetacao)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloItem', text: textoReservaLegal)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoDeclividade)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloItem', text: textoUsoConsolidado)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoRLCompensacao)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloItem', text: textoServidaoAmb)
-				flegaArea.find('input[type=checkbox]').click
-			end
-
-			if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
+			if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/" || link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car" || link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-homologacao1"
 
 				textoNascente = "Nascentes e Veredas"
 				textoLagoLagoa = "Lago e Lagoa Natural"
@@ -173,60 +168,26 @@ end
 				flegaArea = find('.ModuloAlternado', text: textoOutrosCorpos)
 				flegaArea.find('input[type=checkbox]').click
 
-				flegaArea = find('.ModuloItem', text: textoOutrasApps)
-				flegaArea.find('input[type=checkbox]').click
+				if artigo == "4771"
+					puts("Não Marca " + textoOutrasApps)
+				else
+					flegaArea = find('.ModuloItem', text: textoOutrasApps)
+					flegaArea.find('input[type=checkbox]').click
+				end
 
-				flegaArea = find('.ModuloItem', text: textoVegetacao)
-				flegaArea.find('input[type=checkbox]').click
+				if artigo == "4771"
+					puts("Não Marca " + textoVegetacao)
+				else
+					flegaArea = find('.ModuloItem', text: textoVegetacao)
+					flegaArea.find('input[type=checkbox]').click
+				end
 
-				flegaArea = find('.ModuloAlternado', text: textoReservaLegal)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloItem', text: textoDeclividade)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoUsoConsolidado)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloItem', text: textoRLCompensacao)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoServidaoAmb)
-				flegaArea.find('input[type=checkbox]').click
-			end
-
-			if link == "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/" 
-
-				textoNascente = "Nascentes e Veredas"
-				textoLagoLagoa = "Lago e Lagoa Natural"
-				textoRLCompensacao = "Reserva Legal de Compensação"
-
-				flegaArea = find('.ModuloAlternado', text: textoServidaoAdm)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoRiosMais)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloItem', text: textoRiosMedia)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoNascente)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloItem', text: textoLagoLagoa)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoOutrosCorpos)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloItem', text: textoOutrasApps)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloItem', text: textoVegetacao)
-				flegaArea.find('input[type=checkbox]').click
-
-				flegaArea = find('.ModuloAlternado', text: textoReservaLegal)
-				flegaArea.find('input[type=checkbox]').click
+				if artigo == "4771" || artigo == "Def_RL" || artigo == "Exc_RL" || artigo == "PRADA"
+					puts("Não Marca " + textoReservaLegal)
+				else
+					flegaArea = find('.ModuloAlternado', text: textoReservaLegal)
+					flegaArea.find('input[type=checkbox]').click
+				end
 
 				flegaArea = find('.ModuloItem', text: textoDeclividade)
 				flegaArea.find('input[type=checkbox]').click
@@ -234,13 +195,19 @@ end
 				flegaArea = find('.ModuloAlternado', text: textoUsoConsolidado)
 				flegaArea.find('input[type=checkbox]').click
 
-				flegaArea = find('.ModuloItem', text: textoRLCompensacao)
-				flegaArea.find('input[type=checkbox]').click
-
+				if artigo == "Exc_RL"
+					puts("Não Marca " + textoRLCompensacao)
+				else
+					flegaArea = find('.ModuloItem', text: textoRLCompensacao)
+					flegaArea.find('input[type=checkbox]').click
+				end
+				if artigo == "Exc_RL"
+					puts("Não Marca " + textoServidaoAmb)
+				else
 				flegaArea = find('.ModuloAlternado', text: textoServidaoAmb)
 				flegaArea.find('input[type=checkbox]').click
 				end
-	#termino da selecão
+			end
     end
 
     def InsereDados.DesenhaUC(usuario)
@@ -250,22 +217,17 @@ end
 		find("[title='Desenhar forma']").click
 		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
 		page.driver.browser.action.move_to(map,664, 236).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,748, 229).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,753, 276).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,669, 283).click.perform
+		sleep(2)
 		page.driver.browser.action.move_to(map,666, 241).click.perform
 		sleep(10)
 		#inicio da interação com o iframe de atributos
 		page.driver.browser.switch_to.frame(0)
-		#validacao para interagir com campos, caso seja o usuário da marianab
-			if usuario == "marianab"
-				processo = "1919601" #idProcesso EST-CAR: 1919501
-				select("Cerrado", :from => "ctl01$ddlBioma")
-				sleep(5)
-				fill_in("ctl01$txtIdentificadorDoProcesso", :with => processo)
-				sleep(5)
-				find(:id, "ctl01_txtProcessoAno").click
-			end
 		sleep(7)
 		find(:link, "Salvar Atributos").click
 		sleep(10)
@@ -274,9 +236,65 @@ end
 		page.driver.browser.switch_to.frame(1)
 		find(:link, "Sair do Mapa").click
 		sleep(10)
-    end
+	end
+	
+	def InsereDados.VinculaUC(numCarDef)
+		sleep(3) 
+		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+        find("[title*='sobre o elemento selecionado']", visible: true, match: :first).click
+        map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
+		page.driver.browser.action.move_to(map,664, 236).click.perform
+		sleep(3)
+		page.driver.browser.switch_to.frame(0)
+		sleep(2)
+        areaUC = find("[id*='lblAreaTotal']").text
+        find(:link, "Vincular CAR").click
+        find("[name*='txtnumCARVinculado']").set(numCarDef)
+        find("[id*='txtArea']").click
+        find("[id*='txtArea']").set(areaUC)
+        find(:link, "Vincular").click
+        sleep(3)
+        find(:link, "Salvar Atributos").click
+        sleep(3)
+        page.driver.browser.switch_to.frame(1)
+		find(:link, "Sair do Mapa").click
+        sleep(5)
+	end
 
-    def InsereDados.final
+	def InsereDados.AlteraProcessoAptidao(usuario,numCar)
+		textoAreaEmUC = "Área Inserida em UC"
+		first(".Atendimento", text: "SiCAR/SP", visible: true).click
+		find(:link, "Consulta Gerencial").click
+		RealizaBusca.CAR(numCar)
+		first(:link, "Analisar").click
+		first("[id*='TBArea']", text: "Mapa").click
+		flegaArea = first('.ModuloItem', text: textoAreaEmUC)
+		flegaArea.first(:css, 'a[href]').click
+		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+		find("[title*='sobre o elemento selecionado']", visible: true, match: :first).click
+		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
+		page.driver.browser.action.move_to(map,664, 236).click.perform
+		sleep(2)
+		page.driver.browser.switch_to.frame(0)
+			if (usuario == "marianab")
+				processo = "1919601" #idProcesso
+				find("option[value='HABILITADA']").click
+				sleep(5)
+				fill_in("ctl01$txtIdentificadorDoProcesso", :with => processo)
+				sleep(5)
+				find(:id, "ctl01_txtProcessoAno").click
+			end
+			sleep(3)
+			find(:link, "Salvar Atributos").click
+			sleep(5)
+			#Fim da interação com o iframe de atributos
+			#retorna para o iframe do desenho
+			page.driver.browser.switch_to.frame(1)
+			find(:link, "Sair do Mapa").click
+			sleep(5)
+	end
+
+    def InsereDados.final(possuiAreas)
 		#clica na aba Domínio
 		find(:id, "__tab_ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBDominio").click
 		find(:link, "Matrículas").click
@@ -291,10 +309,80 @@ end
 		#aba Finaliza
 		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBFinaliza_carFinaliza_flaInformacao").click
 		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBFinaliza_carFinaliza_flaCiencia").click
+			if possuiAreas == "RL"
+				find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBFinaliza_carFinaliza_flaServidaoTemp").click
+			end
 		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBFinaliza_carFinaliza_flaNotificaEmail").click
 		find(:id, "ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBFinaliza_carFinaliza_cmdFinaliza").click
 		sleep(5)
-		page.driver.browser.switch_to.alert.accept
+		Desenha.verificaPopUp
+		Desenha.verificaPopUp
 		sleep(5)
 		end
+
+	def InsereDados.SolicitaAlteracao(alteracao)
+		find("[title=Alterar]").click
+		find("[id*=cmdAltera]").click
+		Desenha.verificaPopUp
+			if (alteracao == "UC")
+				first("option[value='617']", visible: true).click
+			else
+				select("Acrescentar Anexos", :from => "ctl00$conteudo$TabContainer1$TabPanel1$TabNavegacao$TBFinaliza$carFinaliza$ddlMotivo")
+			end
+		find("textarea[id*='desMotivo']").set("Teste Automatiazado")
+		find("a[id*='cmdSolicita']").click
+		Desenha.verificaPopUp
+		sleep(3)
+		Desenha.verificaPopUp
+	end
+
+	def InsereDados.ObtemDeficit
+		first("[id*='AdequacaoAmbiental']", visible: true).click
+		sleep(2)
+		find(:link, "Reserva Legal").click
+		sleep(2)
+		@areaRestante = find("[id*='totalDeficit']").text
+	end
+
+	def InsereDados.VinculaCAR(numCarDeficitario)
+
+		textoReservaLegal = "Reserva Legal"
+        textoRLCompensacao = "Reserva Legal de Compensação"
+		textoServidaoAmb = "Servidão Ambiental"
+		
+		find(:link, "Mapa", visible: true).click
+		flegaArea = find('.ModuloItem', text: textoRLCompensacao)
+		flegaArea.first(:css, 'a[href]').click
+		page.driver.browser.switch_to.frame("ctl00_conteudo_TabContainer1_TabPanel1_TabNavegacao_TBArea_carArea_ifrmMapa")
+		find("[title*='sobre o elemento selecionado']", visible: true, match: :first).click
+		map = find(:id, "ucCARAreaMapa_ucCARGMapSketch1_CarGMap").native
+		page.driver.browser.action.move_to(map,800,250).click.perform
+		sleep(5)
+		page.driver.browser.switch_to.frame(0)
+		sleep(3)
+		find("[id*='cmdVincularNovo']").click
+		find("[id*='txtnumCARVinculado']").set(numCarDeficitario)
+		find("[id*='txtArea']").click
+		sleep(2)
+		find("[id*='txtArea']").set(@areaRestante)
+		find("[id*='bdatDataInicial']").click
+		find("[id*='cetDataInicial_prevArrow']").click
+		inseredia = 20
+		find(".ajax__calendar_day", text: inseredia).click
+		find("[id*='bdatDataFinal']").click
+		find("[id*='cetDataFinal_today']").click
+		find("[id*='cmdAtualizaCarVnculado']").click
+		find(:link, "Salvar Atributos").click
+		sleep(5)
+		Desenha.verificaPopUp
+		page.driver.browser.switch_to.frame(1)
+		sleep(5)
+		find(:link, "Sair do Mapa").click
+		sleep(5)
+		find(:link, "Finalizar", visible: true).click
+		find("[id*='carFinaliza_cmdFinaliza']").click
+		Desenha.verificaPopUp
+		sleep(3)
+		Desenha.verificaPopUp
+	end
 end

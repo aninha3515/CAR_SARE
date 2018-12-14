@@ -1,9 +1,9 @@
 require 'faker'
-link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-adequacao-test/"
-#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sigam-homologacao1"
-#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
 
-usuario = "karinaac"
+#link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car_test/"
+link = "http://homologacao-sigam.eastus2.cloudapp.azure.com/sma-est-car"
+
+usuario = "55613853720"
 Dado("que esteja tela de cadastro do Sare") do
    visit(link)
    RealizaLogin.acesso(usuario)
@@ -17,14 +17,17 @@ Dado("que esteja tela de cadastro do Sare") do
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Compromissário", tipoPessoa = "Jurídica")
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Compromissário", tipoPessoa = "Física")
     PreencheSare.Pessoa(nomPessoa = Faker::Name.name , funcaoPessoa = "Representante legal", tipoPessoa = "Física")
-    PreencheSare.AlteraSituacao(usuario)
-    PreencheSare.GeraTermo(usuario,tipoTermo = "TCRE")
     #PreencheSare.DesenhaPropSare
     #PreencheSare.InsereCamposProp
     #PreencheSare.NaoExiste
     #PreencheSare.DesenhaRestauracao
+    RealizaLogin.logoff
+    RealizaLogin.acesso(usuario = "karinaac")
+    PreencheSare.RetornaSare
+    PreencheSare.AlteraSituacao(usuario = "karinaac")
+    PreencheSare.GeraTermo(usuario = "karinaac" ,tipoTermo = "TCRE")
   end
   Então("o sistema criará o Projeto SARE") do
     numeroSare = find(:id, "ctl00_conteudo_lblNumeroSARE").text
-    puts("Termo: " + numeroSare)
+    puts("Projeto: " + numeroSare + " Gerado no link: " + link)
   end

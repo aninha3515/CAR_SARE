@@ -9,7 +9,7 @@ Funcionalidade: Analisar Parecer
   Quero executar um script
   Para criar um CAR e analisar
 
-@deslogar_sigam @tira_print
+  @tira_print
 
   Cenario: Analisar CAR via Parecer
   	Dado que o CAR esteja como Inscrito
